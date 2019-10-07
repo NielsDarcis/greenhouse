@@ -16,6 +16,7 @@ import { MaterialModule } from './shared/material.module';
 import { PlantsComponent } from './plants/plants.component';
 import { PlantTypesComponent } from './plant-types/plant-types.component';
 import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
+import { PlantsListComponent } from './plants-list/plants-list.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.compon
     NavigationComponent,
     PlantsComponent,
     PlantTypesComponent,
-    PlantTypesNewComponent
+    PlantTypesNewComponent,
+    PlantsListComponent
   ],
   imports: [
     BrowserModule,
