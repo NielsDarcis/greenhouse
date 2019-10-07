@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database'
-
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -14,13 +14,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './shared/material.module';
 import { PlantsComponent } from './plants/plants.component';
+import { PlantTypesComponent } from './plant-types/plant-types.component';
+import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    PlantsComponent
+    PlantsComponent,
+    PlantTypesComponent,
+    PlantTypesNewComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,11 @@ import { PlantsComponent } from './plants/plants.component';
     AngularFireDatabaseModule,
     FlexLayoutModule,
     MaterialModule,
+    RouterModule.forRoot([
+      { path: 'home', component: PlantsComponent },
+      { path: 'planttypes', component: PlantTypesComponent},
+      { path: 'planttypes/new', component: PlantTypesNewComponent},
+    ]), 
   ],
   providers: [],
   bootstrap: [AppComponent]
