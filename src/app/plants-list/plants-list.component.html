@@ -16,4 +16,7 @@
                   <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
                   
                 </table>
-                <mat-icon class="add-icon"> library_add</mat-icon>
+                <div class="wrapper">
+                  <mat-icon routerLink="/plant/new" class="add-icon"> library_add</mat-icon>
+                  <p class="text">add a plant</p>
+                </div>

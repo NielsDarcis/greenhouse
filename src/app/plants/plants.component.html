@@ -1,14 +1,7 @@
-<p>plants works!</p>
+
 <form (ngSubmit)="onSubmit()" #plantForm="ngForm">
   <input [(ngModel)]="plant.name" name="name" />
   <input [(ngModel)]="plant.type" name="type" />
   <input [(ngModel)]="plant.location" name="location" />
-  <button type="submit">Add</button> -->
-
-  <table mat-table [dataSource]="plantList">
-    <ng-container matColumnDef="score" ngFor="plant in plantList">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let user">{{ plant.name }}</td>
-    </ng-container>
-  </table>
+  <button type="submit">Add</button> 
 </form>

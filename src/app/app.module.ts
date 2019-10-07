@@ -42,6 +42,7 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'planttypes', component: PlantTypesComponent},
       { path: 'planttypes/new', component: PlantTypesNewComponent},
+      { path: 'plant/new', component: PlantsComponent},
     ]), 
   ],
   providers: [],
