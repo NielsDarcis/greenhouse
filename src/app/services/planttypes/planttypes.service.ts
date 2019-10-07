@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { PlantType } from 'src/app/shared/models/plant-type';
+import { Plant } from 'src/app/shared/models/plant/plant';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
