@@ -8,6 +8,5 @@ export class Plant {
 this.name= '';
 this.location= '';
 this.type= '';
-
   }
 }

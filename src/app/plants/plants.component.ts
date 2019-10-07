@@ -19,7 +19,7 @@ export class PlantsComponent implements OnInit {
     console.log(this.plant) ;    
   }
   async getPlants(){
-    this.plantList =    await this.plantService.getAll()
+    this.plantList = await this.plantService.getAll()
   }
   ngOnInit() {
     this.getPlants();
