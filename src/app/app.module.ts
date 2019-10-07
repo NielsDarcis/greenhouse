@@ -38,7 +38,8 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
     FlexLayoutModule,
     MaterialModule,
     RouterModule.forRoot([
-      { path: 'home', component: PlantsComponent },
+      { path: 'home', component: PlantsListComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'planttypes', component: PlantTypesComponent},
       { path: 'planttypes/new', component: PlantTypesNewComponent},
     ]), 
