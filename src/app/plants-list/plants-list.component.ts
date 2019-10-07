@@ -12,9 +12,7 @@ export class PlantsListComponent implements OnInit {
   plant: Plant = new Plant();
   columnsToDisplay = [ 'name', 'type', 'location', ];
   constructor(private plantService: PlantsService) {}
-  onSubmit() {
-    this.plantService.create(this.plant);
-  }
+ 
   async getPlants() {
     this.plantList = await this.plantService.getAll();
   }

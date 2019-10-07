@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="plantList">
        
-            <ng-container matColumnDef="name" style="border-bottom:green, solid, 5px">
+            <ng-container matColumnDef="name">
                     <th class="table-heading" mat-header-cell *matHeaderCellDef> Name </th>
                     <td mat-cell *matCellDef="let plants"> {{plants.name}} </td>
                   </ng-container>
