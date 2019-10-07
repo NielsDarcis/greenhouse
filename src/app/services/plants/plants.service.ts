@@ -8,28 +8,26 @@ import { take } from 'rxjs/operators';
   providedIn: 'root'
 })
 
-
 export class PlantsService {
   item: Observable<any>;
-  plantList: any;
+  itemList: any;
+  database: string= 'plants';
 
   constructor(private db: AngularFireDatabase) { 
-    this.plantList = this.db.list('plants');
-    this.item = this.db.object('plants').valueChanges();
-    this.db.createPushId 
+    this.itemList = this.db.list(this.database);
+    this.item = this.db.object(this.database).valueChanges();
   }
 
-
-  createPlant(plant: Plant) {
-    this.plantList. push(plant);
+  createId(){
+    return this.db.createPushId() 
   }
-  getPlantList(): Observable<any[]>{
-    let plantQuery = this.plantList;
-    console.log(plantQuery)
-    return plantQuery;
+  create(object: Plant) {
+    object.Id = this.createId();
+    this.itemList.push(object);
   }
+  
   async get() {
-    return await this.db.list<Plant>('plants').valueChanges().pipe(take(1)).toPromise();
+    return await this.db.list<Plant>(this.database).valueChanges().pipe(take(1)).toPromise();
   }
 
 }

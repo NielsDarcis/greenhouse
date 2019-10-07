@@ -14,18 +14,14 @@ export class PlantsComponent implements OnInit {
   plantList: Plant[];
  plant: Plant = new Plant();
   constructor(private plantService: PlantsService) {}
-
-
   onSubmit(){
     this.plantService.createPlant(this.plant);
     console.log(this.plant) ;    
   }
-
   async getPlants(){
     this.plantList =    await this.plantService.get()
   }
-
   ngOnInit() {
- this.getPlants();
+    this.getPlants();
   }
 }
