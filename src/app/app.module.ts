@@ -14,13 +14,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './shared/material.module';
 import { PlantsComponent } from './plants/plants.component';
+import { PlantsListComponent } from './plants-list/plants-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    PlantsComponent
+    PlantsComponent,
+    PlantsListComponent
   ],
   imports: [
     BrowserModule,

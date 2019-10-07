@@ -15,11 +15,11 @@ export class PlantsComponent implements OnInit {
  plant: Plant = new Plant();
   constructor(private plantService: PlantsService) {}
   onSubmit(){
-    this.plantService.createPlant(this.plant);
+    this.plantService.create(this.plant);
     console.log(this.plant) ;    
   }
   async getPlants(){
-    this.plantList =    await this.plantService.get()
+    this.plantList =    await this.plantService.getAll()
   }
   ngOnInit() {
     this.getPlants();
