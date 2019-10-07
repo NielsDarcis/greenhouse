@@ -2,9 +2,15 @@
 <form (ngSubmit)="onSubmit()" #plantForm="ngForm">
 
     <input [(ngModel)]="plant.name" name="name">
-    <input [(ngModel)]="type" name="type">
-    <input [(ngModel)]="location" name="location">
+    <input [(ngModel)]="plant.type" name="type">
+    <input [(ngModel)]="plant.location" name="location">
     <button type="submit">Add</button>
+
+    <ul>
+            <li *ngFor="let plant of plantList">
+              {{plant.name}}
+            </li>
+          </ul>
 
 </form>
 {{plantForm.value |json}}

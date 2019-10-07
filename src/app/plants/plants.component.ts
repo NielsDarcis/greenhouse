@@ -11,7 +11,7 @@ export class PlantsComponent implements OnInit {
   name: string ="piet";
   type: string ="";
   location: string ="";
-  plantList: Plant[] =[];
+  plantList: Plant[];
  plant: Plant = new Plant();
   constructor(private plantService: PlantsService) {}
 
@@ -21,10 +21,11 @@ export class PlantsComponent implements OnInit {
     console.log(this.plant) ;    
   }
 
+  async getPlants(){
+    this.plantList =    await this.plantService.get()
+  }
+
   ngOnInit() {
-    let test = this.plantService.getPlantList();
-    for (let tests of test){
-      console.log(tests.content)
-    }
+ this.getPlants();
   }
 }
