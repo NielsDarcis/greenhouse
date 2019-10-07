@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { Plant } from 'src/app/shared/models/plant/plant';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +10,20 @@ import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 
 export class PlantsService {
   item: Observable<any>;
-  itemRef: any;
+  plantList: any;
   constructor(private db: AngularFireDatabase) { 
-    this.itemRef = db.list('plants');
+    this.plantList = db.list('plants');
     this.item = db.object('plants').valueChanges();
   }
 
 
-  createPlant(plant: object) {
-    this.itemRef.push(plant);
-}
+  createPlant(plant: Plant) {
+    this.plantList.push(plant);
+  }
+  getPlantList(){
+    return this.plantList.snapshotChanges();
+    console.log('service');
+  }
 
 
 }

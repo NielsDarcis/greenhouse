@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { PlantsService } from "../services/plants.service";
+import { PlantsService } from "../services/plants/plants.service";
+import { Plant } from '../shared/models/plant/plant';
 
 @Component({
   selector: "app-plants",
@@ -10,20 +11,21 @@ export class PlantsComponent implements OnInit {
   name: string ="piet";
   type: string ="";
   location: string ="";
-
-  plant: object[] = [
+  plantList: Plant[] =[];
+  plant: Plant = 
     { name: this.name, type: this.type, location: this.location }
-  ];
+  ;
 
-  constructor(private plants: PlantsService) {}
+  constructor(private plantService: PlantsService) {}
 
 
   onSubmit(){
-    this.plants.createPlant(plant);
+    this.plantService.createPlant(this.plant);
       
   }
 
   ngOnInit() {
-   
+    this.plantList = this.plantService.getPlantList();
+    console.log(this.plantList);
   }
 }
