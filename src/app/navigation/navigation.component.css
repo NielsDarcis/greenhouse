@@ -4,8 +4,8 @@
 
 .sidenav {
   width: 200px;
-  background-color: lightgreen;
   color: white;
+ 
 }
 
 .sidenav .mat-toolbar {
@@ -16,8 +16,10 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: green;
+  background: url(../../assets/images/leaves.jpg);
+  background-size: cover;
   justify-content: center;
+  opacity: .6;
 }
 
 img{
