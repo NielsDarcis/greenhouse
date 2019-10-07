@@ -12,7 +12,6 @@ export class PlantsComponent implements OnInit {
   type: string ="";
   location: string ="";
   plantList: Plant[] =[];
-
  plant: Plant = new Plant();
   constructor(private plantService: PlantsService) {}
 
@@ -23,7 +22,9 @@ export class PlantsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.plantList = this.plantService.getPlantList();
-    console.log(this.plantList);
+    let test = this.plantService.getPlantList();
+    for (let tests of test){
+      console.log(tests.content)
+    }
   }
 }

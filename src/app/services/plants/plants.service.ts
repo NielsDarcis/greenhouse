@@ -11,19 +11,23 @@ import { Plant } from 'src/app/shared/models/plant/plant';
 export class PlantsService {
   item: Observable<any>;
   plantList: any;
+
   constructor(private db: AngularFireDatabase) { 
-    this.plantList = db.list('plants');
-    this.item = db.object('plants').valueChanges();
+    this.plantList = this.db.list('plants');
+    this.item = this.db.object('plants').valueChanges();
   }
 
 
   createPlant(plant: Plant) {
     this.plantList.push(plant);
   }
-  getPlantList(){
-    return this.plantList.snapshotChanges();
-    console.log('service');
+  getPlantList(): Observable<any[]>{
+    let plantQuery = this.plantList;
+    console.log(plantQuery)
+    return plantQuery;
   }
-
+  getShares(path) {
+    return this.db.list(path).valueChanges();
+  }
 
 }
