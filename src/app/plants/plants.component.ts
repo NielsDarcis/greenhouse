@@ -12,16 +12,14 @@ export class PlantsComponent implements OnInit {
   type: string ="";
   location: string ="";
   plantList: Plant[] =[];
-  plant: Plant = 
-    { name: this.name, type: this.type, location: this.location }
-  ;
 
+ plant: Plant = new Plant();
   constructor(private plantService: PlantsService) {}
 
 
   onSubmit(){
     this.plantService.createPlant(this.plant);
-      
+    console.log(this.plant) ;    
   }
 
   ngOnInit() {
