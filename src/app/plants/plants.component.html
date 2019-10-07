@@ -1,8 +1,10 @@
 <p>plants works!</p>
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" #plantForm="ngForm">
 
-    <input [(ngModel)]="name" name="name">
+    <input [(ngModel)]="plant.name" name="name">
     <input [(ngModel)]="type" name="type">
     <input [(ngModel)]="location" name="location">
     <button type="submit">Add</button>
+
 </form>
+{{plantForm.value |json}}
