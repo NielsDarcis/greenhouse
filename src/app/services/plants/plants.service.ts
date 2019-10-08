@@ -29,7 +29,7 @@ export class PlantsService {
     this.itemList.push(object);
   }
   update(key: string, newPlant: Plant) {
-    this.itemList.update(key, { plant: newPlant });
+    this.itemList.update(key, newPlant);
   }
   delete(key: string) {
     this.itemList.remove(key);

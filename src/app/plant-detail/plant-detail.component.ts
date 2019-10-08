@@ -23,7 +23,7 @@ export class PlantDetailComponent implements OnInit {
   }
 
   onSubmit(){
-    
+    this.plantService.update(this.plantId, this.plant)
   }
 
   ngOnInit() {
