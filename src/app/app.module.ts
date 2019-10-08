@@ -17,6 +17,7 @@ import { PlantsComponent } from './plants/plants.component';
 import { PlantTypesComponent } from './plant-types/plant-types.component';
 import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
+import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
     PlantsComponent,
     PlantTypesComponent,
     PlantTypesNewComponent,
-    PlantsListComponent
+    PlantsListComponent,
+    PlantDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,8 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
       { path: 'planttypes', component: PlantTypesComponent},
       { path: 'planttypes/new', component: PlantTypesNewComponent},
       { path: 'plant/new', component: PlantsComponent},
+      { path: 'plant-details/:id', component: PlantDetailComponent},
+
     ]), 
   ],
   providers: [],
