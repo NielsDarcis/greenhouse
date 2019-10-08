@@ -11,14 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {MatTableModule} from '@angular/material/table';
-
-
-
-
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     MatInputModule,
@@ -33,7 +28,7 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     MatListModule,
     MatTableModule,
-  
+    MatSliderModule,
   ],
   exports: [
     CommonModule,
@@ -49,6 +44,7 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     MatListModule,
     MatTableModule,
-  ]
+    MatSliderModule,
+  ],
 })
 export class MaterialModule { }
