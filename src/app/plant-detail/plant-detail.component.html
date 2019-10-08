@@ -1,8 +1,12 @@
-<p>plant-detail works!</p>
-<p>{{plant.name}}</p>
-<form (ngSubmit)="onSubmit()" #plantForm="ngForm">
-    <input [(ngModel)]="plant.name" name="name" />
-    <input [(ngModel)]="plant.type" name="type" />
-    <input [(ngModel)]="plant.location" name="location" />
-    <button type="submit">Save</button> 
-  </form>
+<form (ngSubmit)="onSubmit()" #plantForm="ngForm" class="form-global">
+        <h2>Plant Detail</h2>
+        <fa-icon [icon]= "faLeaf"></fa-icon>
+
+  <input [(ngModel)]="plant.name" name="name" class="block" />
+  <input [(ngModel)]="plant.type" name="type" class="block" />
+  <input [(ngModel)]="plant.location" name="location" class="block" />
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button type="submit" class="button-style">Save</button>
+    <mat-icon>delete</mat-icon>
+  </div>
+</form>

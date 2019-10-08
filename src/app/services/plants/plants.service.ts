@@ -12,6 +12,7 @@ export class PlantsService {
   item: Observable<any>;
   itemList: any;
   database: string= 'plants';
+  complete: any;
 
   constructor(private db: AngularFireDatabase) { 
     this.itemList = this.db.list(this.database);
@@ -31,6 +32,10 @@ export class PlantsService {
   update(key: string, newPlant: Plant) {
     this.itemList.update(key, newPlant);
   }
+
+   
+ 
+   
   delete(key: string) {
     this.itemList.remove(key);
   }
