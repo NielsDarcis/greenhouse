@@ -20,6 +20,7 @@ import { PlantTypesComponent } from './plant-types/plant-types.component';
 import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
+import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
     PlantTypesNewComponent,
     PlantsListComponent,
     DropMakerComponent,
+    PlantDetailComponent,
   ],
   imports: [
     BrowserModule,

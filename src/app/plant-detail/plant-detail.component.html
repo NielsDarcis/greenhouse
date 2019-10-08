@@ -1,0 +1,8 @@
+<p>plant-detail works!</p>
+<p>{{plant.name}}</p>
+<form (ngSubmit)="onSubmit()" #plantForm="ngForm">
+    <input [(ngModel)]="plant.name" name="name" />
+    <input [(ngModel)]="plant.type" name="type" />
+    <input [(ngModel)]="plant.location" name="location" />
+    <button type="submit">Save</button> 
+  </form>

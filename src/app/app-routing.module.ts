@@ -4,6 +4,7 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
 import { PlantsComponent } from './plants/plants.component';
 import { PlantTypesComponent } from './plant-types/plant-types.component';
 import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
+import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'planttypes', component: PlantTypesComponent},
   { path: 'planttypes/new', component: PlantTypesNewComponent},
   { path: 'plant/new', component: PlantsComponent},
+  { path: 'plant-details/:id', component: PlantDetailComponent},
 ];
 
 @NgModule({

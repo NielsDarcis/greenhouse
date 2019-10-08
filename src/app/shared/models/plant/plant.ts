@@ -1,6 +1,6 @@
 export class Plant {
-  Id: any;
-  name: string;
+  Id?: any;
+  name?: string;
   location?: string;
   type?: string;
   water?: number;
