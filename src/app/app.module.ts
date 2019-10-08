@@ -39,15 +39,7 @@ import { PlantDetailComponent } from './plant-detail/plant-detail.component';
     AngularFireDatabaseModule,
     FlexLayoutModule,
     MaterialModule,
-    RouterModule.forRoot([
-      { path: 'home', component: PlantsListComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full'},
-      { path: 'planttypes', component: PlantTypesComponent},
-      { path: 'planttypes/new', component: PlantTypesNewComponent},
-      { path: 'plant/new', component: PlantsComponent},
-      { path: 'plant-details/:id', component: PlantDetailComponent},
-
-    ]), 
+    RouterModule.forRoot([]), 
   ],
   providers: [],
   bootstrap: [AppComponent]
