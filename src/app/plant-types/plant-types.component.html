@@ -1,1 +1,14 @@
-<p>plant-types works!</p>
+<h2>My Heroes</h2>
+<ul *ngIf="plantTypeList.length > 0; else emptyPage" class="planttypelist">
+  <li class='planttype' *ngFor="let plantType of plantTypeList">
+    <mat-card >
+      <span class="badge">{{plantType.name}}</span>
+    </mat-card>
+  </li>
+</ul>
+
+<ng-template #emptyPage class="emptyPage">
+  <p>Please add some plants</p>
+</ng-template>
+
+<mat-icon routerLink="/planttypes/new" class="add_circle"> add_circle</mat-icon>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { PlantType } from 'src/app/shared/models/plant-type';
-import { Plant } from 'src/app/shared/models/plant/plant';
 import { take } from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +10,7 @@ import { take } from 'rxjs/operators';
 export class PlanttypesService {
   item: Observable<any>;
   itemList: any;
-  database: string= 'plants';
+  database: string= 'plantTypes';
 
   constructor(private db: AngularFireDatabase) { 
     this.itemList = this.db.list(this.database);
@@ -22,14 +21,15 @@ export class PlanttypesService {
     return this.db.createPushId() 
   }
   async getAll() {
-    return await this.db.list<Plant>(this.database).valueChanges().pipe(take(1)).toPromise();
+    return await this.db.list<PlantType>(this.database).valueChanges().pipe(take(1)).toPromise();
   }
   create(object: PlantType) {
     object.Id = this.createId();
     this.itemList.push(object);
   }
-  update(key: string, newPlant: Plant) {
-    this.itemList.update(key, { plant: newPlant });
+  // TODO write a update not with object
+  update(key: string, newPlantType: PlantType) { 
+    this.itemList.update(key, { plantType: newPlantType });
   }
   delete(key: string) {
     this.itemList.remove(key);
