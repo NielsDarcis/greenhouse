@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import {Router} from '@angular/router';
 import { PlantsService } from "../services/plants/plants.service";
 import { Plant } from "../shared/models/plant/plant";
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
@@ -16,8 +17,9 @@ export class PlantDetailComponent implements OnInit {
   plant: Plant = new Plant();
 
   constructor(
-    private route: ActivatedRoute,
-    private plantService: PlantsService
+    private activeRoute: ActivatedRoute,
+    private plantService: PlantsService,
+    private router: Router,
   ) {}
 
   async getPlantById() {
@@ -27,11 +29,17 @@ export class PlantDetailComponent implements OnInit {
 
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
-    
+  }
+
+  deletePlant(){
+    console.log(this.plantId);
+    this.plantService.delete(this.plantId);
+    console.log('check');
+    this.router.navigate(['home']);
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id");
+    let id = this.activeRoute.snapshot.paramMap.get("id");
     this.plantId = id;
     this.getPlantById();
   }
