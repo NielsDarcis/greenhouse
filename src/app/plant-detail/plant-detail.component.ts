@@ -10,7 +10,7 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ["./plant-detail.component.scss"]
 })
 export class PlantDetailComponent implements OnInit {
-  faLeaf = faLeaf;
+  faLeaf= faLeaf;
   plantId: string;
   plantList: Plant[];
   plant: Plant = new Plant();
@@ -27,6 +27,7 @@ export class PlantDetailComponent implements OnInit {
 
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
+    
   }
 
   ngOnInit() {

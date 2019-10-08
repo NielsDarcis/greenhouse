@@ -1,12 +1,17 @@
 <form (ngSubmit)="onSubmit()" #plantForm="ngForm" class="form-global">
-        <h2>Plant Detail</h2>
-        <fa-icon [icon]= "faLeaf"></fa-icon>
-
+  <div div fxLayout="row" fxLayoutAlign="start center">
+    <h2>Plant Detail</h2>
+    <fa-icon [icon]="faLeaf" class="icon-leaf"></fa-icon>
+    <mat-icon class="icon-clear">clear</mat-icon>     
+  </div>
+  <label>Name:</label>
   <input [(ngModel)]="plant.name" name="name" class="block" />
+  <label>Type:</label>
   <input [(ngModel)]="plant.type" name="type" class="block" />
+  <label>Location:</label>
   <input [(ngModel)]="plant.location" name="location" class="block" />
-  <div fxLayout="row" fxLayoutAlign="start center">
-    <button type="submit" class="button-style">Save</button>
-    <mat-icon>delete</mat-icon>
+  <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
+    <button type="submit" class="button-style" >Save</button>
+    <mat-icon class="icon-garbage">delete</mat-icon>
   </div>
 </form>

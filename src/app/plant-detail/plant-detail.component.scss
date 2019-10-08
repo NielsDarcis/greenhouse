@@ -12,6 +12,11 @@
     font-size: 17px;
 }
 
+label{
+    font-size: 25px;
+    padding-left: 23px;
+}
+
 .form-global{
     background-color: #41941f26;
     padding: 50px;
@@ -23,6 +28,27 @@
     border-radius: 5px;
     padding: 8px 23px;
     border: none;
-    background-color: #0c6b0cad;
+    background-color:#3f5f08f0;
     color: white;
+}
+
+.icon-leaf{
+    font-size: 25px;
+    padding: 0 1px 5px 10px;
+    color: #3f5f08f0;
+}
+
+.icon-garbage{
+    color: #3f5f08f0;
+    padding: 0px 0 8px 10px;
+    font-size: 33px;
+}
+
+.icon-clear{
+    padding-left: 31%;
+}
+
+h2{
+    padding: 0 0 0 20px;
+    font-size: 34px;
 }
