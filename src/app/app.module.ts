@@ -13,11 +13,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './shared/material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { PlantsComponent } from './plants/plants.component';
 import { PlantTypesComponent } from './plant-types/plant-types.component';
 import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
-
+import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
     PlantsComponent,
     PlantTypesComponent,
     PlantTypesNewComponent,
-    PlantsListComponent
+    PlantsListComponent,
+    DropMakerComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
     AngularFireDatabaseModule,
     FlexLayoutModule,
     MaterialModule,
-    RouterModule.forRoot([]), 
+    RouterModule.forRoot([]),
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
