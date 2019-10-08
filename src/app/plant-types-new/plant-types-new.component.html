@@ -1,8 +1,17 @@
-<p>plant-types-new works!</p>
 <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Plant name">
-    </mat-form-field>
-    <fa-icon [icon]="faTint"></fa-icon><mat-slider></mat-slider>
-    <!-- <drop-maker></drop-maker> -->
-  </form>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Plant name" />
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    moist:
+    <div id="moist">
+      <mat-slider
+        thumbLabel
+        max="100"
+        min="1"
+        (input)="pitch($event)"
+      ></mat-slider>
+  </div>
+    <drop-maker *ngIf="value" [amount]="value" class="drops"> </drop-maker>
+  </div>
+</form>

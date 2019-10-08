@@ -1,19 +1,19 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { faTint } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-drop-maker',
+  selector: 'drop-maker',
   templateUrl: './drop-maker.component.html',
-  styleUrls: ['./drop-maker.component.scss']
 })
 export class DropMakerComponent implements OnChanges {
   faTint = faTint;
-  amount: number = 4;
-  dropWidth: number;
+  printdrops: number[] = [0];
+  @Input() amount: number;
+  
   constructor() { }
 
   ngOnChanges() {
-    this.dropWidth = this.amount *75/5;
+    this.printdrops= Array(Math.round(this.amount/10)).fill(0).map((x,i)=>i);
   }
 
 }
