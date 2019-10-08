@@ -1,16 +1,49 @@
-
-table.mat-table {
-    border-spacing: 0;
-    width: 100%;
+h1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-align: center;
 }
 
-.table-heading{
-    font: size 30px !important;
-    color: black;
-    border-bottom: black solid 5px;
+table.mat-table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table-heading {
+  font: size 30px !important;
+  color: black;
+  border-bottom: black solid 5px;
 }
 
 .mat-header-cell {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.add-icon {
+  float: right;
+
+  margin: 10px 10px 0 0;
+}
+
+.add-icon-large{
+  font-size: 150px;
+  width: 100%;
+  text-align: center;
+  color: darkseagreen;
+  margin-top: 200px;
+  cursor:pointer;
+}
+
+.wrapper {
+  cursor: pointer;
+  p {
+    position: relative;
+    bottom: 30px;
+    left: 0px;
+    visibility: hidden;
+  }
+  p:hover{
+      visibility: visible;
+      color: black;
+  }
 }
