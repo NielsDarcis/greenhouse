@@ -21,13 +21,14 @@ export class PlantsListComponent implements OnInit {
  
   async getPlants() {
     this.plantList = await this.plantService.getAll();
+    debugger;
   }
   ngOnInit() {
     this.getPlants();
   }
 
   onRowClicked(plants){
-    console.log('Row clicked: ', plants.Id);
+    console.log('Row clicked: ', plants);
     this.router.navigate(['plant-details', plants.Id])
   }
 }

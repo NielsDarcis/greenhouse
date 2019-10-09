@@ -33,13 +33,14 @@ export class PlantDetailComponent implements OnInit {
   }
 
   deletePlant(){
+    console.log(this.plantId)
     this.plantService.delete(this.plantId);
     this.router.navigate(['home']);
   }
 
   ngOnInit() {
-    this.getPlantById();
     let id = this.activeRoute.snapshot.paramMap.get("id");
     this.plantId = id;
+    this.getPlantById();
   }
 }

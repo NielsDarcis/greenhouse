@@ -1,0 +1,50 @@
+.block{
+    display: block;
+    width: 49%;
+    margin: 16px;
+    border: white solid 1px;
+    line-height: 27px;
+    padding-left: 12px;
+    color: white;
+    background: #0e4614c7;
+    opacity: .7;
+    border-radius: 20px;
+    font-size: 17px;
+}
+
+label{
+    font-size: 25px;
+    padding-left: 23px;
+}
+
+.form-global{
+    background-color: #41941f26;
+    padding: 50px;
+    height: 70vh;
+}
+
+.button-style{
+    margin-left: 15px;
+    border-radius: 5px;
+    padding: 8px 23px;
+    border: none;
+    background-color:#3f5f08f0;
+    color: white;
+    cursor:pointer;
+}
+
+.icon-plant{
+    font-size: 42px;
+    padding: 0 1px 5px 10px;
+    color: #3f5f08f0;
+}
+
+.icon-clear{
+    padding-left: 35%;
+    cursor:pointer;
+}
+
+h2{
+    padding: 0 0 0 20px;
+    font-size: 34px;
+}

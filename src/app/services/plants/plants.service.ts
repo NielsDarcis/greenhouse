@@ -31,6 +31,7 @@ export class PlantsService {
   create(object: Plant) {
     object.Id = this.createId();
     this.itemList.push(object);
+    = this.itemList.getKey()
   }
   update(key: string, newPlant: Plant) {
     this.itemList.update(key, newPlant);
