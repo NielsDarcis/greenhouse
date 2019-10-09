@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatListModule,
     MatTableModule,
     MatSliderModule,
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatListModule,
     MatTableModule,
     MatSliderModule,
+    MatSnackBarModule,
   ],
   declarations: [],
 })

@@ -31,7 +31,7 @@ export class PlantsService {
     object.Id = key;
     this.itemList.update(key, object);
   }
-  update(key: string, newPlant: Plant) {
+  update(key: string, newPlant: Plant){
     this.itemList.update(key, newPlant);
   }
 

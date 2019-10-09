@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { PlantsService } from "../../services/plants/plants.service";
 import { Plant } from "../../shared/models/plant/plant";
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-plant-detail",
@@ -12,6 +13,7 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 })
 export class PlantDetailComponent implements OnInit {
   faLeaf= faLeaf;
+  selectedFile: File = null;
   plantId: string;
   plantList: Plant[];
   plant: Plant = new Plant();
@@ -20,7 +22,18 @@ export class PlantDetailComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private plantService: PlantsService,
     private router: Router,
+    private _snackBar: MatSnackBar,
   ) {}
+
+  onFileSelected(event){
+    this.selectedFile= <File>event.target.files[0]
+  }
+
+  onUpload(){
+    this.plant.image = "my name is bob";
+    console.log(this.plant)
+    this.plantService.update(this.plantId, this.plant)
+  }
 
   async getPlantById() {
     this.plantList = await this.plantService.getAll();
@@ -30,12 +43,20 @@ export class PlantDetailComponent implements OnInit {
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
     this.router.navigate(['home']);
+    this.openSnackBar('Plant Saved', 'Succeed')
   }
 
   deletePlant(){
     console.log(this.plantId)
     this.plantService.delete(this.plantId);
     this.router.navigate(['home']);
+    this.openSnackBar('Plant Deleted', 'Succeed')
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   ngOnInit() {
