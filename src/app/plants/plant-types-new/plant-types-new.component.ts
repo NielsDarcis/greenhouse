@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import {Router} from '@angular/router';
 import { PlantType } from 'src/app/shared/models/plant-type';
+import { faTree} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-plant-types-new',
   templateUrl: './plant-types-new.component.html',
   styleUrls: ['./plant-types-new.component.scss']
 })
 export class PlantTypesNewComponent implements OnInit {
-  moistValue:number;
-  sunValue:number;
-  frostValue:number;
-  fireValue:number;
+  moistValue:number=0;
+  sunValue:number=0;
+  frostValue:number = 0;
+  fireValue:number = 0;
+  faTree = faTree;
   plantType: PlantType = new PlantType();
   constructor(
     private plantTypesService: PlanttypesService, 
