@@ -18,9 +18,6 @@ export class PlantsService {
     this.item = this.db.object(this.database).valueChanges();
   }
 
-  createId() {
-    return this.db.createPushId();
-  }
   async getAll() {
     return await this.db
       .list<Plant>(this.database)
@@ -28,10 +25,11 @@ export class PlantsService {
       .pipe(take(1))
       .toPromise();
   }
-  create(object: Plant) {
-    object.Id = this.createId();
-    this.itemList.push(object);
-    this.itemList.getKey(object);
+  create(object: Plant){
+    object.Id = this.db.createPushId();
+    let key = this.itemList.push(object).key;
+    object.Id = key;
+    this.itemList.update(key, object);
   }
   update(key: string, newPlant: Plant) {
     this.itemList.update(key, newPlant);

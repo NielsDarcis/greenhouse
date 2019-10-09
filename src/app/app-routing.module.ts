@@ -11,7 +11,7 @@ import { PlantNewComponent } from './plants/plant-new/plant-new.component';
 const routes: Routes = [
   { path: "home", component: PlantsListComponent },
   { path: "", redirectTo: "home", pathMatch: "full" },
-  {path:"plant/new", component: PlantNewComponent},
+  { path:"plant/new", component: PlantNewComponent},
   { path: "planttypes", component: PlantTypesComponent },
   { path: "planttypes/new", component: PlantTypesNewComponent },
   { path: "plant-details/:id", component: PlantDetailComponent },

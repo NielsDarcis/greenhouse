@@ -16,7 +16,7 @@ export class PlantNewComponent implements OnInit {
   constructor(private plantService: PlantsService, private router: Router) { }
 
   onSubmit() {
-    this.plantService.create(this.plant);
+    this.plantService.createPlant(this.plant);
     this.router.navigate(['home']);
   }
 
