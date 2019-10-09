@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlantTypesNewComponent implements OnInit {
   moistValue:number;
   sunValue:number;
+  frostValue:number;
   constructor() { }
   ngOnInit() {
   }
@@ -16,6 +17,9 @@ export class PlantTypesNewComponent implements OnInit {
   }
   pitchSun(event:any){
     this.sunValue = event.value;
+  }
+  pitchFrost(event:any){
+    this.frostValue = event.value;
   }
   
 }

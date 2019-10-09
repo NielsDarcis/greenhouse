@@ -31,15 +31,15 @@
 
     <div fxLayout="row" fxLayoutAlign="start center">
         min temp:
-        <div id="sun">
+        <div id="frost">
           <mat-slider
             thumbLabel
             max="50"
             min="-50"
-            (input)="pitchMinTemp($event)"
+            (input)="pitchFrost($event)"
           ></mat-slider>
       </div>
-        <sun-maker *ngIf="sunValue" [sunValue]="sunValue" class="sun"> </sun-maker>
+        <frost-maker *ngIf="frostValue" [frostValue]="frostValue" class="frost"> </frost-maker>
       </div>
     
 </form>

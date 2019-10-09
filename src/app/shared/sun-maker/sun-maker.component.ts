@@ -4,7 +4,6 @@ import { faSun } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'sun-maker',
   templateUrl: './sun-maker.component.html',
-  styleUrls: ['./sun-maker.component.scss']
 })
 export class SunMakerComponent implements OnChanges {
   faSun = faSun;
