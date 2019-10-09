@@ -12,34 +12,49 @@
         min="1"
         (input)="pitchMoist($event)"
       ></mat-slider>
-  </div>
-    <drop-maker *ngIf="moistValue" [moistValue]="moistValue" class="drops"> </drop-maker>
+    </div>
+    <drop-maker *ngIf="moistValue" [moistValue]="moistValue" class="drops">
+    </drop-maker>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="start center">
-      sun:
-      <div id="sun">
-        <mat-slider
-          thumbLabel
-          max="100"
-          min="1"
-          (input)="pitchSun($event)"
-        ></mat-slider>
+    sun:
+    <div id="sun">
+      <mat-slider
+        thumbLabel
+        max="100"
+        min="1"
+        (input)="pitchSun($event)"
+      ></mat-slider>
     </div>
-      <sun-maker *ngIf="sunValue" [sunValue]="sunValue" class="sun"> </sun-maker>
-    </div>
+    <sun-maker *ngIf="sunValue" [sunValue]="sunValue" class="sun"> </sun-maker>
+  </div>
 
-    <div fxLayout="row" fxLayoutAlign="start center">
-        min temp:
-        <div id="frost">
-          <mat-slider
-            thumbLabel
-            max="50"
-            min="-50"
-            (input)="pitchFrost($event)"
-          ></mat-slider>
-      </div>
-        <frost-maker *ngIf="frostValue" [frostValue]="frostValue" class="frost"> </frost-maker>
-      </div>
-    
+  <div fxLayout="row" fxLayoutAlign="start center">
+    min temp:
+    <div id="frost">
+      <mat-slider
+        thumbLabel
+        max="50"
+        min="-50"
+        (input)="pitchFrost($event)"
+      ></mat-slider>
+    </div>
+    <frost-maker *ngIf="frostValue" [frostValue]="frostValue" class="frost">
+    </frost-maker>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    max temp:
+    <div id="fire">
+      <mat-slider
+        thumbLabel
+        max="100"
+        min="0"
+        (input)="pitchFire($event)"
+      ></mat-slider>
+    </div>
+    <fire-maker *ngIf="fireValue" [fireValue]="fireValue" class="fire">
+    </fire-maker>
+  </div>
 </form>

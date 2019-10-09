@@ -9,6 +9,7 @@ export class PlantTypesNewComponent implements OnInit {
   moistValue:number;
   sunValue:number;
   frostValue:number;
+  fireValue:number;
   constructor() { }
   ngOnInit() {
   }
@@ -21,5 +22,7 @@ export class PlantTypesNewComponent implements OnInit {
   pitchFrost(event:any){
     this.frostValue = event.value;
   }
-  
+  pitchFire(event:any){
+    this.fireValue = event.value;
+  }
 }
