@@ -16,12 +16,12 @@ import { MaterialModule } from './shared/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
-import { PlantTypesComponent } from './plant-types/plant-types.component';
-import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
-import { PlantsListComponent } from './plants-list/plants-list.component';
+import { PlantTypesComponent } from './plants/plant-types/plant-types.component';
+import { PlantTypesNewComponent } from './plants/plant-types-new/plant-types-new.component';
+import { PlantsListComponent } from './plants/plants-list/plants-list.component';
 import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
-import { PlantDetailComponent } from './plant-detail/plant-detail.component';
-import { PlantNewComponent } from './plant-new/plant-new.component';
+import { PlantDetailComponent } from './plants/plant-detail/plant-detail.component';
+import { PlantNewComponent } from './plants/plant-new/plant-new.component';
 
 @NgModule({
   declarations: [
