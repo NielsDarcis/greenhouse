@@ -10,6 +10,6 @@ export class FireMakerComponent implements OnChanges {
   @Input() fireValue: number;
 
   ngOnChanges() {
-    this.printFires= Array(Math.round(this.fireValue/10)).fill(0).map((x,i)=>i);
+    this.printFires= Array(Math.round(this.fireValue/5)).fill(0).map((x,i)=>i);
   }
 }

@@ -24,10 +24,11 @@ export class PlanttypesService {
     return await this.db.list<PlantType>(this.database).valueChanges().pipe(take(1)).toPromise();
   }
   create(object: PlantType) {
-    object.Id = this.createId();
+    console.log("atest")
+    object.id = this.createId();
     this.itemList.push(object);
+    
   }
-  // TODO write a update not with object
   update(key: string, newPlantType: PlantType) { 
     this.itemList.update(key,  newPlantType);
   }

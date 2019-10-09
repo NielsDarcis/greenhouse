@@ -1,9 +1,8 @@
 export class PlantType {
-    Id?: any;
-    name?: string;
-    soil?: string;
-    moist?: string;
-    frost?: string;
+    id?: any;
+    name: string;
+    moist?: number;
+    frost?: number;
     minTemp?: number;
     maxTemp?: number;
     light?: number;
