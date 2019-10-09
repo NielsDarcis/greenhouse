@@ -6,13 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plant-types-new.component.scss']
 })
 export class PlantTypesNewComponent implements OnInit {
-  value:number;
-
+  moistValue:number;
+  sunValue:number;
   constructor() { }
   ngOnInit() {
   }
-  pitch(event: any) {
-    this.value = event.value;
+  pitchMoist(event: any) {
+    this.moistValue = event.value;
+  }
+  pitchSun(event:any){
+    this.sunValue = event.value;
   }
   
 }

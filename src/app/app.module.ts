@@ -21,6 +21,7 @@ import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.compon
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
+import { SunMakerComponent } from './shared/sun-maker/sun-maker.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PlantDetailComponent } from './plant-detail/plant-detail.component';
     PlantTypesNewComponent,
     PlantsListComponent,
     DropMakerComponent,
+    SunMakerComponent,
     PlantDetailComponent,
   ],
   imports: [
