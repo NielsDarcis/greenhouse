@@ -23,6 +23,8 @@ import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
 import { PlantDetailComponent } from './plants/plant-detail/plant-detail.component';
 import { PlantNewComponent } from './plants/plant-new/plant-new.component';
 import { SunMakerComponent } from './shared/sun-maker/sun-maker.component';
+import { FrostMakerComponent } from './shared/frost-maker/frost-maker.component';
+import { FireMakerComponent } from './shared/fire-maker/fire-maker.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { SunMakerComponent } from './shared/sun-maker/sun-maker.component';
     PlantsListComponent,
     DropMakerComponent,
     SunMakerComponent,
+    FrostMakerComponent,
+    FireMakerComponent,
     PlantDetailComponent,
     PlantNewComponent,
   ],
