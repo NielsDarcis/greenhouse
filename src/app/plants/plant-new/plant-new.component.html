@@ -1,1 +1,18 @@
 <p>plant-new works!</p>
+<form (ngSubmit)="onSubmit()" #plantForm="ngForm" class="form-global">
+        <div div fxLayout="row" fxLayoutAlign="start center">
+          <h2>Plant Detail</h2>
+          <fa-icon [icon]="faLeaf" class="icon-leaf"></fa-icon>
+          <mat-icon class="icon-clear" routerLink="/home" >clear</mat-icon>     
+        </div>
+        <label>Name:</label>
+        <input [(ngModel)]="plant.name" name="name" class="block" />
+        <label>Type:</label>
+        <input [(ngModel)]="plant.type" name="type" class="block" />
+        <label>Location:</label>
+        <input [(ngModel)]="plant.location" name="location" class="block" />
+        <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
+          <button type="submit" class="button-style" >Save</button>
+          <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>
+        </div>
+      </form>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PlantsService } from "../../services/plants/plants.service";
+import { Plant } from "../../shared/models/plant/plant";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-plant-new',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlantNewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private plantService: PlantsService, private router: Router) { }
 
   ngOnInit() {
   }
