@@ -5,7 +5,7 @@ export class Plant {
   location?: string;
   type?: string;
   water?: number;
-  image?: any;
+  imageUrl?: string;
   constructor() {
     this.name = "";
     this.location = "";

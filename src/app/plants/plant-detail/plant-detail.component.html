@@ -1,5 +1,5 @@
-<div>
-  <form (ngSubmit)="onSubmit()" #plantForm="ngForm" class="form-global">
+<div fxLayout="row" fxLayoutAlign="start end"  >
+  <form (ngSubmit)="onSubmit()" #plantForm="ngForm"  fxFlex="60">
     <div div fxLayout="row" fxLayoutAlign="start center">
       <h2>Plant Detail</h2>
       <fa-icon [icon]="faLeaf" class="icon-leaf"></fa-icon>
@@ -16,7 +16,7 @@
       <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>
     </div>
   </form>
-  <div>
+  <div fxFlex="40">
     <h3>Image Upload</h3>
     <input type="file" (change)="onFileSelected($event)">
     <button (click)="onUpload()">upload</button>
