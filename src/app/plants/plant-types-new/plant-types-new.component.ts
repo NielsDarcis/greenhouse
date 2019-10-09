@@ -37,7 +37,7 @@ export class PlantTypesNewComponent implements OnInit {
   }
   onSubmit() {
     this.plantTypesService.create(this.plantType);
-    this.router.navigate(['home']);
+    this.router.navigate(['planttypes']);
   }
   ngOnInit() {
   }

@@ -1,17 +1,18 @@
 <form (ngSubmit)="onSubmit()" #plantTypeForm="ngForm" class="example-form">
-    <div div fxLayout="row" fxLayoutAlign="start center">
-        <h2>Add a plant type</h2>
-        <fa-icon [icon]="faTree" class="icon-plant"></fa-icon>
-        <mat-icon class="icon-clear" routerLink="/home">clear</mat-icon>
-      </div>
-     
+  <div div fxLayout="row" fxLayoutAlign="start center">
+    <h2>Add a plant type</h2>
+    <fa-icon [icon]="faTree" class="icon-plant"></fa-icon>
+    <mat-icon class="icon-clear" routerLink="/planttypes">clear</mat-icon>
+  </div>
+
   <mat-form-field class="example-full-width">
-    <input [(ngModel)]="plantType.name" 
-      name="name" 
-      matInput 
-      placeholder="Add a plant type" 
+    <input
+      [(ngModel)]="plantType.name"
+      name="name"
+      matInput
+      placeholder="Add a plant type"
       class="input  mat-headline"
-      />
+    />
   </mat-form-field>
 
   <div fxLayout="row wrap" fxLayoutAlign="start center">
@@ -26,7 +27,7 @@
         (input)="pitchMoist($event)"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{moistValue}} RH</div>
+    <div fxFlex="10" class="paramValue">{{ moistValue }} RH</div>
     <div class="icons">
       <drop-maker *ngIf="moistValue" [moistValue]="moistValue"> </drop-maker>
     </div>
@@ -44,7 +45,7 @@
         (input)="pitchSun($event)"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{sunValue}} CD</div>
+    <div fxFlex="10" class="paramValue">{{ sunValue }} CD</div>
     <div class="icons">
       <sun-maker *ngIf="sunValue" [sunValue]="sunValue" class="sun">
       </sun-maker>
@@ -63,7 +64,7 @@
         (input)="pitchFrost($event)"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{frostValue | toCelcius }}</div>
+    <div fxFlex="10" class="paramValue">{{ frostValue | toCelcius }}</div>
     <div class="icons">
       <frost-maker *ngIf="frostValue" [frostValue]="frostValue" class="frost">
       </frost-maker>
@@ -82,13 +83,11 @@
         (input)="pitchFire($event)"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{fireValue | toCelcius}}</div>
+    <div fxFlex="10" class="paramValue">{{ fireValue | toCelcius }}</div>
     <div class="icons">
       <fire-maker *ngIf="fireValue" [fireValue]="fireValue" class="fire">
       </fire-maker>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
-    <button type="submit" class="button-style" >CREATE</button>
-  </div>
+  <button mat-fab bottom-right type="submit"><mat-icon>add</mat-icon></button>
 </form>
