@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {Router} from '@angular/router';
-import { PlantsService } from "../services/plants/plants.service";
-import { Plant } from "../shared/models/plant/plant";
+import { PlantsService } from "../../services/plants/plants.service";
+import { Plant } from "../../shared/models/plant/plant";
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -29,18 +29,17 @@ export class PlantDetailComponent implements OnInit {
 
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
+    this.router.navigate(['home']);
   }
 
   deletePlant(){
-    console.log(this.plantId);
     this.plantService.delete(this.plantId);
-    console.log('check');
     this.router.navigate(['home']);
   }
 
   ngOnInit() {
+    this.getPlantById();
     let id = this.activeRoute.snapshot.paramMap.get("id");
     this.plantId = id;
-    this.getPlantById();
   }
 }

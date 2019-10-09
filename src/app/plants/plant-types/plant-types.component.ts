@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlanttypesService } from "../services/planttypes/planttypes.service";
-import { PlantType } from '../shared/models/plant-type';
+import { PlanttypesService } from "../../services/planttypes/planttypes.service";
+import { PlantType } from '../../shared/models/plant-type';
 @Component({
   selector: 'app-plant-types',
   templateUrl: './plant-types.component.html',

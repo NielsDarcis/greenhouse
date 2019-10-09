@@ -15,23 +15,24 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './shared/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { PlantsComponent } from './plants/plants.component';
+
 import { PlantTypesComponent } from './plant-types/plant-types.component';
 import { PlantTypesNewComponent } from './plant-types-new/plant-types-new.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
 import { PlantDetailComponent } from './plant-detail/plant-detail.component';
+import { PlantNewComponent } from './plant-new/plant-new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    PlantsComponent,
     PlantTypesComponent,
     PlantTypesNewComponent,
     PlantsListComponent,
     DropMakerComponent,
     PlantDetailComponent,
+    PlantNewComponent,
   ],
   imports: [
     BrowserModule,
