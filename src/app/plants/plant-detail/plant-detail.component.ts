@@ -5,6 +5,7 @@ import { PlantsService } from "../../services/plants/plants.service";
 import { Plant } from "../../shared/models/plant/plant";
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: "app-plant-detail",
@@ -23,16 +24,19 @@ export class PlantDetailComponent implements OnInit {
     private plantService: PlantsService,
     private router: Router,
     private _snackBar: MatSnackBar,
+    private storage: AngularFireStorage,
   ) {}
 
   onFileSelected(event){
     this.selectedFile= <File>event.target.files[0]
   }
 
-  onUpload(){
-    this.plant.image = "my name is bob";
-    console.log(this.plant)
-    this.plantService.update(this.plantId, this.plant)
+ async  onUpload(){
+    const file = this.selectedFile;
+    const filePath = this.selectedFile.name;
+    const url = await this.storage.upload(filePath, file).then(async res => await res.ref.getDownloadURL());
+    this.plant.imageUrl = url;
+    this.plantService.update(this.plantId, this.plant);
   }
 
   async getPlantById() {

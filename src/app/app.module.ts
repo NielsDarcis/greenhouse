@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { RouterModule } from '@angular/router';
 import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -49,6 +50,7 @@ import { ToCelciusPipe } from './shared/to-celcius.pipe';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig,'greenhouse'),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     FlexLayoutModule,
     MaterialModule,
     RouterModule.forRoot([]),

@@ -1,6 +1,8 @@
 .sidenav-container {
   height: 100%;
+  background-color: #8fbc8f42;
 }
+
 
 .sidenav {
   width: 200px;
