@@ -29,7 +29,7 @@ export class PlanttypesService {
   }
   // TODO write a update not with object
   update(key: string, newPlantType: PlantType) { 
-    this.itemList.update(key, { plantType: newPlantType });
+    this.itemList.update(key,  newPlantType);
   }
   delete(key: string) {
     this.itemList.remove(key);

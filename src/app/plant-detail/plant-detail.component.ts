@@ -1,39 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import {Router} from '@angular/router';
 import { PlantsService } from "../services/plants/plants.service";
 import { Plant } from "../shared/models/plant/plant";
-
+import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-plant-detail',
-  templateUrl: './plant-detail.component.html',
-  styleUrls: ['./plant-detail.component.scss']
+  selector: "app-plant-detail",
+  templateUrl: "./plant-detail.component.html",
+  styleUrls: ["./plant-detail.component.scss"]
 })
 export class PlantDetailComponent implements OnInit {
-
+  faLeaf= faLeaf;
   plantId: string;
   plantList: Plant[];
-  plant: Plant = new Plant() ;
-  
-  constructor(private route: ActivatedRoute, private plantService: PlantsService) { }
+  plant: Plant = new Plant();
 
-  async getPlantById(){
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private plantService: PlantsService,
+    private router: Router,
+  ) {}
+
+  async getPlantById() {
     this.plantList = await this.plantService.getAll();
-    this.plant = this.plantList.find(plant => plant.Id === this.plantId)
+    this.plant = this.plantList.find(plant => plant.Id === this.plantId);
   }
 
-  onSubmit(){
-    
+  onSubmit() {
+    this.plantService.update(this.plantId, this.plant);
+  }
+
+  deletePlant(){
+    console.log(this.plantId);
+    this.plantService.delete(this.plantId);
+    console.log('check');
+    this.router.navigate(['home']);
   }
 
   ngOnInit() {
-    
-    let id = this.route.snapshot.paramMap.get('id');
+    let id = this.activeRoute.snapshot.paramMap.get("id");
     this.plantId = id;
     this.getPlantById();
-    
   }
-
-
-
 }
