@@ -25,6 +25,7 @@ import { PlantNewComponent } from './plants/plant-new/plant-new.component';
 import { SunMakerComponent } from './shared/sun-maker/sun-maker.component';
 import { FrostMakerComponent } from './shared/frost-maker/frost-maker.component';
 import { FireMakerComponent } from './shared/fire-maker/fire-maker.component';
+import { ToCelciusPipe } from './shared/to-celcius.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FireMakerComponent } from './shared/fire-maker/fire-maker.component';
     FireMakerComponent,
     PlantDetailComponent,
     PlantNewComponent,
+    ToCelciusPipe,
   ],
   imports: [
     BrowserModule,

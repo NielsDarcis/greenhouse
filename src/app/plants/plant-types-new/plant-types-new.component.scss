@@ -5,13 +5,14 @@ label{
 
 .example-form {
   min-width: 150px;
-  max-width: 1000px;
+
   width: 100%;
   background-color: #41941f26;
+  margin:auto;
 }
 
 .example-full-width {
-  width: 100%;
+  width: 45%;
 }
 
 .mat-slider {
@@ -19,11 +20,12 @@ label{
 }
 
 .legend {
-  width: 75px;
+  width: 120px;
 }
 
 .icons {
   width: 150px;
+  padding-left: 23px;
 }
 
 .button-style{
@@ -33,5 +35,29 @@ label{
   border: none;
   background-color:#3f5f08f0;
   color: white;
+  cursor:pointer;
+}
+.input{
+  width: 40%;
+}
+.paramValue{ 
+  text-align: center;
+}
+
+.icon-plant{
+  font-size: 42px;
+  padding: 0 1px 5px 10px;
+  color: #3f5f08f0;
+}
+::ng-deep .mat-input-wrapper{
+  width:10px !important;
+}
+
+h2{
+  padding: 0 0 0 20px;
+  font-size: 34px;
+}
+.icon-clear{
+  padding-left: 31%;
   cursor:pointer;
 }
