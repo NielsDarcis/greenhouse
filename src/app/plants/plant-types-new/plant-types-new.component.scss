@@ -5,9 +5,8 @@ label{
 
 .example-form {
   min-width: 150px;
-
+  height: 100vh;;
   width: 100%;
-  background-color: #41941f26;
   margin:auto;
 }
 
@@ -60,4 +59,8 @@ h2{
 .icon-clear{
   padding-left: 31%;
   cursor:pointer;
+}
+.add-btn{
+  margin-left: 45%;
+  float: left;
 }

@@ -1,8 +1,65 @@
-<h2>My Heroes</h2>
+<h2>Defined Plant Types</h2>
+<mat-card
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  class="plantListHeader"
+>
+  <span fxFlex="20" class="badge">Plant Type Name</span>
+  <span fxFlex="20" class="badge">Water</span>
+  <span fxFlex="20" class="badge">Sun</span>
+  <span fxFlex="20" class="badge">min Temp</span>
+  <span fxFlex="20" class="badge">max Temp</span>
+</mat-card>
 <ul *ngIf="plantTypeList.length > 0; else emptyPage" class="planttypelist">
-  <li class='planttype' *ngFor="let plantType of plantTypeList">
-    <mat-card >
-      <span class="badge">{{plantType.name}}</span>
+  <li class="planttype" *ngFor="let plantType of plantTypeList">
+    <mat-card
+      fxLayout.gt-xs="row"
+      fxLayout="column"
+      fxLayoutAlign="space-between center"
+    >
+      <span fxFlex.gt-xs="20" class="badge">
+        {{ plantType.name }}
+      </span>
+      <span fxFlex.gt-xs="20" class="badge">
+        <span fxHide.gt-xs class="badge">water:</span>
+        {{ plantType.moist }} RH
+        <drop-maker
+          *ngIf="plantType.moist"
+          [moistValue]="plantType.moist"
+          fxLayout.xs="row inline"
+        >
+        </drop-maker>
+      </span>
+      <span fxFlex.gt-xs="20" class="badge">
+        <span fxHide.gt-xs class="badge">sun:</span>
+        {{ plantType.light }} CD
+        <sun-maker
+          *ngIf="plantType.light"
+          [sunValue]="plantType.light"
+          fxLayout.xs="row inline"
+        >
+        </sun-maker>
+      </span>
+      <span fxFlex.gt-xs="20" class="badge">
+        <span fxHide.gt-xs class="badge">min temp:</span>
+        {{ plantType.frost | toCelcius }}
+        <frost-maker
+          *ngIf="plantType.frost"
+          [frostValue]="plantType.frost"
+          fxLayout.xs="row inline"
+        >
+        </frost-maker>
+      </span>
+      <span fxFlex.gt-xs="20" class="badge"
+        ><span fxHide.gt-xs class="badge">max temp:</span
+        >{{ plantType.maxTemp | toCelcius }}
+        <fire-maker
+          *ngIf="plantType.maxTemp"
+          [fireValue]="plantType.maxTemp"
+          fxLayout.xs="row inline"
+        >
+        </fire-maker>
+      </span>
     </mat-card>
   </li>
 </ul>
@@ -10,5 +67,6 @@
 <ng-template #emptyPage class="emptyPage">
   <p>Please add some plants</p>
 </ng-template>
-
-<mat-icon routerLink="/planttypes/new" class="add_circle"> add_circle</mat-icon>
+<button mat-fab class="add-btn" routerLink="/planttypes/new">
+  <mat-icon>add</mat-icon>
+</button>

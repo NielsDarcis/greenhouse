@@ -47,7 +47,7 @@
     </div>
     <div fxFlex="10" class="paramValue">{{ sunValue }} CD</div>
     <div class="icons">
-      <sun-maker *ngIf="sunValue" [sunValue]="sunValue" class="sun">
+      <sun-maker *ngIf="sunValue" [sunValue]="sunValue">
       </sun-maker>
     </div>
   </div>
@@ -66,7 +66,7 @@
     </div>
     <div fxFlex="10" class="paramValue">{{ frostValue | toCelcius }}</div>
     <div class="icons">
-      <frost-maker *ngIf="frostValue" [frostValue]="frostValue" class="frost">
+      <frost-maker *ngIf="frostValue" [frostValue]="frostValue">
       </frost-maker>
     </div>
   </div>
@@ -85,9 +85,9 @@
     </div>
     <div fxFlex="10" class="paramValue">{{ fireValue | toCelcius }}</div>
     <div class="icons">
-      <fire-maker *ngIf="fireValue" [fireValue]="fireValue" class="fire">
+      <fire-maker *ngIf="fireValue" [fireValue]="fireValue">
       </fire-maker>
     </div>
   </div>
-  <button mat-fab bottom-right type="submit"><mat-icon>add</mat-icon></button>
+  <button mat-fab class="add-btn" type="submit"><mat-icon>add</mat-icon></button>
 </form>
