@@ -20,7 +20,7 @@
     <div style="width:50%; height:50%">
       <img [src]="plant.imageUrl" width=200px height=200px>
     </div>
-    <div ngIf="plant.imageUrl">
+    <div>
       <h3>Image Upload</h3>
       <input type="file" (change)="onFileSelected($event)">
       <button (click)="onUpload()">upload</button>
