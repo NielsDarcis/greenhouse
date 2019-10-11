@@ -1,4 +1,12 @@
-<h2>Defined Plant Types</h2>
+<div fxLayout.gt-sm="row" fxLayout.xs="column" fxLayoutAlign="start center" >
+  <h2 fxFlex="20">Defined Plant Types</h2>
+    <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="searchFilter">
+    </mat-form-field>
+  <button mat-fab class="btn" (click)="onfilter($event)" aria-label="filter" fxFlex="5 nposhrink nogrow">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
 <mat-card
   fxLayout="row"
   fxLayoutAlign="space-between center"
@@ -11,51 +19,51 @@
   <span fxFlex="20" class="badge">max Temp</span>
 </mat-card>
 <ul *ngIf="plantTypeList.length > 0; else emptyPage" class="planttypelist">
-  <li class="planttype" *ngFor="let plantType of plantTypeList">
+  <li class="planttype" *ngFor="let item of printList">
     <mat-card
       fxLayout.gt-xs="row"
       fxLayout="column"
       fxLayoutAlign="space-between center"
     >
       <span fxFlex.gt-xs="20" class="badge name">
-        {{ plantType.name }}
+        {{ item.name }}
       </span>
       <span fxFlex.gt-xs="20" class="badge">
         <span fxHide.gt-xs class="badge">water:</span>
-        {{ plantType.moist }} RH
+        {{ item.moist }} RH
         <drop-maker
-          *ngIf="plantType.moist"
-          [moistValue]="plantType.moist"
+          *ngIf="item.moist"
+          [moistValue]="item.moist"
           fxLayout.xs="row inline"
         >
         </drop-maker>
       </span>
       <span fxFlex.gt-xs="20" class="badge">
         <span fxHide.gt-xs class="badge">sun:</span>
-        {{ plantType.light }} CD
+        {{ item.light }} CD
         <sun-maker
-          *ngIf="plantType.light"
-          [sunValue]="plantType.light"
+          *ngIf="item.light"
+          [sunValue]="item.light"
           fxLayout.xs="row inline"
         >
         </sun-maker>
       </span>
       <span fxFlex.gt-xs="20" class="badge">
         <span fxHide.gt-xs class="badge">min temp:</span>
-        {{ plantType.frost | toCelcius }}
+        {{ item.frost | toCelcius }}
         <frost-maker
-          *ngIf="plantType.frost"
-          [frostValue]="plantType.frost"
+          *ngIf="item.frost"
+          [frostValue]="item.frost"
           fxLayout.xs="row inline"
         >
         </frost-maker>
       </span>
       <span fxFlex.gt-xs="20" class="badge"
         ><span fxHide.gt-xs class="badge">max temp:</span
-        >{{ plantType.maxTemp | toCelcius }}
+        >{{ item.maxTemp | toCelcius }}
         <fire-maker
-          *ngIf="plantType.maxTemp"
-          [fireValue]="plantType.maxTemp"
+          *ngIf="item.maxTemp"
+          [fireValue]="item.maxTemp"
           fxLayout.xs="row inline"
         >
         </fire-maker>
@@ -67,6 +75,6 @@
 <ng-template #emptyPage class="emptyPage">
   <p>Please add some plants</p>
 </ng-template>
-<button mat-fab class="add-btn" routerLink="/planttypes/new">
+<button mat-fab class="btn" routerLink="/planttypes/new">
   <mat-icon>add</mat-icon>
 </button>
