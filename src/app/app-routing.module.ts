@@ -14,6 +14,7 @@ const routes: Routes = [
   { path:"plant/new", component: PlantNewComponent},
   { path: "planttypes", component: PlantTypesComponent },
   { path: "planttypes/new", component: PlantTypesNewComponent },
+  { path: "planttypes/:id", component: PlantTypesNewComponent },
   { path: "plant-details/:id", component: PlantDetailComponent },
 ];
 

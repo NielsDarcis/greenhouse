@@ -1,9 +1,8 @@
 export class PlantType {
     id?: any;
     name: string;
-    moist?: number;
-    frost?: number;
-    minTemp?: number;
-    maxTemp?: number;
-    light?: number;
+    moist: number = 0;
+    minTemp: number = 0;
+    maxTemp: number = 0;
+    light: number = 0;
 }

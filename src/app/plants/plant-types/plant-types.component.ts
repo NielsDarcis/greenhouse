@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import { PlantType } from "../../shared/models/plant-type";
+import { Router } from "@angular/router";
 import * as Fuse from 'fuse.js';
 
 @Component({
@@ -13,7 +14,7 @@ export class PlantTypesComponent implements OnInit {
   printList: PlantType[] = [];
   showFilter: boolean = false;
   searchFilter: string = "";
-  constructor(private plantTypesService: PlanttypesService) {}
+  constructor(private plantTypesService: PlanttypesService, private router: Router ) {}
   
   async getPlants() {
     this.plantTypeList = await this.plantTypesService.getAll();
@@ -41,5 +42,8 @@ export class PlantTypesComponent implements OnInit {
       shortResult.push(item.item);
     }
     this.printList = shortResult;
+  }
+  onRowClicked(id: string) {
+    this.router.navigate(["planttypes", id]);
   }
 }

@@ -1,6 +1,9 @@
 <form (ngSubmit)="onSubmit()" #plantTypeForm="ngForm" class="example-form">
   <div div fxLayout="row" fxLayoutAlign="start center">
-    <h2>Add a plant type</h2>
+    <h2 *ngIf="plantType.id; else changePlant">Change your {{plantType.name}}</h2>
+    <ng-template #changePlant>
+      <h2>Add a plant type</h2>
+    </ng-template>
     <fa-icon [icon]="faTree" class="icon-plant"></fa-icon>
     <mat-icon class="icon-clear" routerLink="/planttypes">clear</mat-icon>
   </div>
@@ -10,7 +13,7 @@
       [(ngModel)]="plantType.name"
       name="name"
       matInput
-      placeholder="Add a plant type"
+      placeholder="plant type"
       class="input  mat-headline"
     />
   </mat-form-field>
@@ -24,12 +27,13 @@
         thumbLabel
         max="100"
         min="1"
-        (input)="pitchMoist($event)"
+        [(ngModel)]="plantType.moist"
+        name="moist"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{ moistValue }} RH</div>
+    <div fxFlex="10" class="paramValue">{{ plantType.moist }} RH</div>
     <div class="icons">
-      <drop-maker *ngIf="moistValue" [moistValue]="moistValue"> </drop-maker>
+      <drop-maker *ngIf="plantType.moist" [moistValue]="plantType.moist"> </drop-maker>
     </div>
   </div>
 
@@ -42,12 +46,13 @@
         thumbLabel
         max="100"
         min="1"
-        (input)="pitchSun($event)"
+        [(ngModel)]="plantType.light"
+        name="light"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{ sunValue }} CD</div>
+    <div fxFlex="10" class="paramValue">{{ plantType.light }} CD</div>
     <div class="icons">
-      <sun-maker *ngIf="sunValue" [sunValue]="sunValue">
+      <sun-maker *ngIf="plantType.light" [sunValue]="plantType.light">
       </sun-maker>
     </div>
   </div>
@@ -61,12 +66,13 @@
         thumbLabel
         max="50"
         min="-50"
-        (input)="pitchFrost($event)"
+        [(ngModel)]="plantType.minTemp"
+        name="frost"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{ frostValue | toCelcius }}</div>
+    <div fxFlex="10" class="paramValue">{{ plantType.minTemp | toCelcius }}</div>
     <div class="icons">
-      <frost-maker *ngIf="frostValue" [frostValue]="frostValue">
+      <frost-maker *ngIf="plantType.minTemp" [frostValue]="plantType.minTemp">
       </frost-maker>
     </div>
   </div>
@@ -80,14 +86,27 @@
         thumbLabel
         max="50"
         min="0"
-        (input)="pitchFire($event)"
+        [(ngModel)]="plantType.maxTemp"
+        name="fire"
       ></mat-slider>
     </div>
-    <div fxFlex="10" class="paramValue">{{ fireValue | toCelcius }}</div>
+    <div fxFlex="10" class="paramValue">{{ plantType.maxTemp | toCelcius }}</div>
     <div class="icons">
-      <fire-maker *ngIf="fireValue" [fireValue]="fireValue">
+      <fire-maker *ngIf="plantType.maxTemp" [fireValue]="plantType.maxTemp">
       </fire-maker>
     </div>
   </div>
-  <button mat-fab class="add-btn" type="submit"><mat-icon>add</mat-icon></button>
+  <div *ngIf="plantType.id; else newBtn">
+    <button mat-fab class="add-btn">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button (click)="deletePlant()" mat-fab>
+        <mat-icon>delete</mat-icon>
+      </button>
+  </div>
+  <ng-template #newBtn>
+    <button  mat-fab class="add-btn">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-template>
 </form>
