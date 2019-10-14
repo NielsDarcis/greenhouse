@@ -21,6 +21,7 @@
 <ul *ngIf="plantTypeList.length > 0; else emptyPage" class="planttypelist">
   <li class="planttype" *ngFor="let item of printList">
     <mat-card
+      (click)="onRowClicked(item.id)"
       fxLayout.gt-xs="row"
       fxLayout="column"
       fxLayoutAlign="space-between center"
@@ -50,10 +51,10 @@
       </span>
       <span fxFlex.gt-xs="20" class="badge">
         <span fxHide.gt-xs class="badge">min temp:</span>
-        {{ item.frost | toCelcius }}
+        {{ item.minTemp | toCelcius }}
         <frost-maker
-          *ngIf="item.frost"
-          [frostValue]="item.frost"
+          *ngIf="item.minTemp"
+          [frostValue]="item.minTemp"
           fxLayout.xs="row inline"
         >
         </frost-maker>

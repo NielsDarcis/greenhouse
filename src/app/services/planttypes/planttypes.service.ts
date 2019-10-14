@@ -23,11 +23,14 @@ export class PlanttypesService {
   async getAll() {
     return await this.db.list<PlantType>(this.database).valueChanges().pipe(take(1)).toPromise();
   }
+  async getById(id:string){
+    return await this.db.object<PlantType>(this.database+"/"+id).valueChanges().pipe(take(1)).toPromise();
+  }
   create(object: PlantType) {
-    console.log("atest")
-    object.id = this.createId();
-    this.itemList.push(object);
-    
+    object.id = this.db.createPushId();
+    let key = this.itemList.push(object).key;
+    object.id = key;
+    this.itemList.update(key, object);
   }
   update(key: string, newPlantType: PlantType) { 
     this.itemList.update(key,  newPlantType);
