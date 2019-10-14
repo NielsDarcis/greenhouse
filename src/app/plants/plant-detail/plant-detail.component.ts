@@ -87,9 +87,10 @@ export class PlantDetailComponent implements OnInit {
     });
   }
 
+
+  // haal lijst van type planten op
   async getPlantTypes() {
     this.plantTypeList = await this.plantTypeService.getAll();
-    console.log(this.plantTypeList);
   }
 
   ngOnInit() {
