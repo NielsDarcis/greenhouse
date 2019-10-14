@@ -21,8 +21,14 @@ export class PlantTypesNewComponent implements OnInit {
     this.plantTypesService.create(this.plantType);
     this.router.navigate(["planttypes"]);
   }
-  onDelete(){
-    this.plantTypesService.delete(this.plantType.id);
+  delete(id: string){
+    event.preventDefault();
+    this.plantTypesService.delete(id);
+    this.router.navigate(["planttypes"]);
+  }
+  edit(plantType: PlantType){
+    event.preventDefault();
+    this.plantTypesService.update(plantType.id, plantType);
     this.router.navigate(["planttypes"]);
   }
   async ngOnInit() {

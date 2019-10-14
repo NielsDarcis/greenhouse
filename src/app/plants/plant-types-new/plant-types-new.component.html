@@ -97,10 +97,10 @@
     </div>
   </div>
   <div *ngIf="plantType.id; else newBtn">
-    <button mat-fab class="add-btn">
+    <button (click)="edit(plantType)" mat-fab class="add-btn">
       <mat-icon>edit</mat-icon>
     </button>
-    <button (click)="deletePlant()" mat-fab>
+    <button (click)="delete(plantType.id)" mat-fab>
         <mat-icon>delete</mat-icon>
       </button>
   </div>
