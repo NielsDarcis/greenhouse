@@ -1,9 +1,17 @@
-<div fxLayout.gt-sm="row" fxLayout.xs="column" fxLayoutAlign="start center" >
+<div fxLayout.gt-sm="row" fxLayout.xs="column" fxLayoutAlign="start center">
   <h2 fxFlex="20">Defined Plant Types</h2>
-    <mat-form-field class="example-full-width">
-        <input matInput [(ngModel)]="searchFilter">
-    </mat-form-field>
-  <button mat-fab class="btn" (click)="onfilter($event)" aria-label="filter" fxFlex="5 nposhrink nogrow">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="searchFilter" />
+  </mat-form-field>
+  <button
+    mat-fab
+    class="btn"
+    (click)="onfilter($event)"
+    aria-label="filter"
+    fxFlex="5"
+    noshrink
+    nogrow
+  >
     <mat-icon>search</mat-icon>
   </button>
 </div>
