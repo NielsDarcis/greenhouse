@@ -29,7 +29,7 @@ export class PlanttypesService {
   create(object: PlantType) {
     object.id = this.db.createPushId();
     let key = this.itemList.push(object).key;
-    object.ivvd = key;
+    object.id = key;
     this.itemList.update(key, object);
   }
   update(key: string, newPlantType: PlantType) { 
