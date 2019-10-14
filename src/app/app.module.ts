@@ -18,7 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import { PlantTypesComponent } from './plants/plant-types/plant-types.component';
-import { PlantTypesNewComponent } from './plants/plant-types-new/plant-types-new.component';
+import { PlantTypesNewComponent, PlantTypeNewDialog } from './plants/plant-types-new/plant-types-new.component';
 import { PlantsListComponent } from './plants/plants-list/plants-list.component';
 import { DropMakerComponent } from './shared/drop-maker/drop-maker.component';
 import { PlantDetailComponent } from './plants/plant-detail/plant-detail.component';
@@ -42,6 +42,10 @@ import { ToCelciusPipe } from './shared/to-celcius.pipe';
     PlantDetailComponent,
     PlantNewComponent,
     ToCelciusPipe,
+    PlantTypeNewDialog,
+  ],
+  entryComponents: [
+    PlantTypeNewDialog
   ],
   imports: [
     BrowserModule,
