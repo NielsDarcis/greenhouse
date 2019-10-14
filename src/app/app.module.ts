@@ -27,6 +27,7 @@ import { SunMakerComponent } from './shared/sun-maker/sun-maker.component';
 import { FrostMakerComponent } from './shared/frost-maker/frost-maker.component';
 import { FireMakerComponent } from './shared/fire-maker/fire-maker.component';
 import { ToCelciusPipe } from './shared/to-celcius.pipe';
+import { LocationCanvasComponent } from './locations/location-canvas/location-canvas.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ToCelciusPipe } from './shared/to-celcius.pipe';
     PlantDetailComponent,
     PlantNewComponent,
     ToCelciusPipe,
+    LocationCanvasComponent,
   ],
   imports: [
     BrowserModule,
