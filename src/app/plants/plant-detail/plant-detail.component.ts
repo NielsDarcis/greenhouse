@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {Router} from '@angular/router';
 import { PlantsService } from "../../services/plants/plants.service";
+import { PlanttypesService } from "../../services/planttypes/planttypes.service"
 import { Plant } from "../../shared/models/plant/plant";
+import {PlantType } from "../../shared/models/plant-type";
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -15,13 +17,17 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class PlantDetailComponent implements OnInit {
   faLeaf= faLeaf;
   selectedFile: File = null;
+  selectedValue: String;
   plantId: string;
   plantList: Plant[];
+  plantTypeList: PlantType []; 
+  plantType: PlantType = new PlantType;
   plant: Plant = new Plant();
 
   constructor(
     private activeRoute: ActivatedRoute,
     private plantService: PlantsService,
+    private plantTypeService: PlanttypesService,
     private router: Router,
     private _snackBar: MatSnackBar,
     private storage: AngularFireStorage,
@@ -59,12 +65,14 @@ export class PlantDetailComponent implements OnInit {
     this.plant = this.plantList.find(plant => plant.Id === this.plantId);
   }
 
+  // update a plant 
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
     this.router.navigate(['home']);
     this.openSnackBar('Plant Saved', 'Succeed')
   }
 
+  // remove a plant
   deletePlant(){
     console.log(this.plantId)
     this.plantService.delete(this.plantId);
@@ -72,15 +80,22 @@ export class PlantDetailComponent implements OnInit {
     this.openSnackBar('Plant Deleted', 'Succeed')
   }
 
+  // snackbar for completed actions
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
   }
 
+  async getPlantTypes() {
+    this.plantTypeList = await this.plantTypeService.getAll();
+    console.log(this.plantTypeList);
+  }
+
   ngOnInit() {
     let id = this.activeRoute.snapshot.paramMap.get("id");
     this.plantId = id;
     this.getPlantById();
+    this.getPlantTypes();
   }
 }

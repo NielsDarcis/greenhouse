@@ -26,7 +26,6 @@ export class PlantsListComponent implements OnInit {
   }
 
   onRowClicked(plants) {
-    console.log("Row clicked: ", plants);
     this.router.navigate(["plant-details", plants.Id]);
   }
 }

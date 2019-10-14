@@ -7,8 +7,12 @@
     </div>
     <label>Name:</label>
     <input [(ngModel)]="plant.name" name="name" class="block" />
-    <label>Type:</label>
-    <input [(ngModel)]="plant.type" name="type" class="block" />
+    <mat-label>Type:</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="plantTypeList">
+        <mat-option *ngFor="let plant of plantTypeList" [value]="plant.id">
+            {{plant.name}}
+          </mat-option>
+    </mat-select>
     <label>Location:</label>
     <input [(ngModel)]="plant.location" name="location" class="block" />
     <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
