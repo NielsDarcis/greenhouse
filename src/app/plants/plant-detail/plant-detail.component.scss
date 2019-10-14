@@ -1,56 +1,86 @@
-.block{
-    display: block;
-    width: 49%;
-    margin: 16px;
-    border: white solid 1px;
-    line-height: 27px;
-    padding-left: 12px;
+.block {
+  display: block;
+  width: 49%;
+  margin: 16px;
+  border: white solid 1px;
+  line-height: 27px;
+  padding-left: 12px;
+  color: white;
+  background: #0e4614c7;
+  opacity: 0.7;
+  border-radius: 20px;
+  font-size: 17px;
+}
+
+label {
+  font-size: 25px;
+  padding-left: 23px;
+}
+
+mat-label {
+  font-size: 25px;
+  padding-left: 23px;
+}
+
+.mat-select {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: white solid 1px;
+  line-height: 27px;
+  color: white;
+  background: #0e4614c7;
+  opacity: 0.7;
+  border-radius: 20px;
+  font-size: 17px;
+  margin: 16px 0 16px 15px;
+  display: block;
+  width: 51%;
+}
+
+.mat-select-value {
+  color: white!important;
+  & > span {
     color: white;
-    background: #0e4614c7;
-    opacity: .7;
-    border-radius: 20px;
-    font-size: 17px;
+    & > span {
+      color: white;
+    }
+  }
 }
 
-label{
-    font-size: 25px;
-    padding-left: 23px;
+.ng-tns-c9-1 {
+  color: white;
 }
 
-.form-global{
-  
-   
+.button-style {
+  margin-left: 15px;
+  border-radius: 5px;
+  padding: 8px 23px;
+  border: none;
+  background-color: #3f5f08f0;
+  color: white;
+  cursor: pointer;
 }
 
-.button-style{
-    margin-left: 15px;
-    border-radius: 5px;
-    padding: 8px 23px;
-    border: none;
-    background-color:#3f5f08f0;
-    color: white;
-    cursor:pointer;
+.icon-leaf {
+  font-size: 25px;
+  padding: 0 1px 5px 10px;
+  color: #3f5f08f0;
 }
 
-.icon-leaf{
-    font-size: 25px;
-    padding: 0 1px 5px 10px;
-    color: #3f5f08f0;
+.icon-garbage {
+  color: #3f5f08f0;
+  padding: 0px 0 8px 10px;
+  font-size: 33px;
+  cursor: pointer;
 }
 
-.icon-garbage{
-    color: #3f5f08f0;
-    padding: 0px 0 8px 10px;
-    font-size: 33px;
-    cursor:pointer;
+.icon-clear {
+  padding-left: 31%;
+  cursor: pointer;
 }
 
-.icon-clear{
-    padding-left: 31%;
-    cursor:pointer;
-}
-
-h2{
-    padding: 0 0 0 20px;
-    font-size: 34px;
+h2 {
+  padding: 0 0 0 20px;
+  font-size: 34px;
 }
