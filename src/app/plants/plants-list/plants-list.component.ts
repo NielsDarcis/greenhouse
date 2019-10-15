@@ -12,20 +12,26 @@ import { MatTableDataSource } from "@angular/material/table";
 })
 export class PlantsListComponent implements OnInit {
   plantList: Plant[];
-  plant: Plant = new Plant();
+  dataSource: any;
+  plant: Plant = new Plant(); 
   columnsToDisplay = ["name", "type", "location"];
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private plantService: PlantsService, private router: Router) {}
 
   async getPlants() {
     this.plantList = await this.plantService.getAll();
+    this.dataSource = new MatTableDataSource(this.plantList);
   }
+
   ngOnInit() {
     this.getPlants();
   }
 
-  onRowClicked(plants) {
+  onRowClicked(plants: Plant) {
     this.router.navigate(["plant-details", plants.Id]);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
