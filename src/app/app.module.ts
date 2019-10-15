@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './shared/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { NgxGaugeModule } from 'ngx-gauge';
 import { AuthService } from './services/auth.service'
 
 import { ToCelciusPipe } from './shared/to-celcius.pipe';
@@ -63,7 +63,7 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
     RouterModule.forRoot([]),
     FontAwesomeModule,
     AngularFireAuthModule,
-
+    NgxGaugeModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

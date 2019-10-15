@@ -30,4 +30,9 @@
       <button (click)="onUpload()">upload</button>
     </div>
   </div>
+  <ngx-gauge [type]="gaugeType" 
+           [value]="gaugeValue" 
+           [label]="gaugeLabel"  
+           [append]="gaugeAppendText">
+  </ngx-gauge>
 </div>
