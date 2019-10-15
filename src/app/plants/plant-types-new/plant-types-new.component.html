@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" #plantTypeForm="ngForm" class="example-form">
+<form ngNativeValidate (ngSubmit)="onSubmit()" #plantTypeForm="ngForm" class="example-form">
   <div div fxLayout="row" fxLayoutAlign="start center">
     <h2 *ngIf="plantType.id; else changePlant">Change your {{plantType.name}}</h2>
     <ng-template #changePlant>
@@ -15,6 +15,7 @@
       matInput
       placeholder="plant type"
       class="input  mat-headline"
+      required 
     />
   </mat-form-field>
 
