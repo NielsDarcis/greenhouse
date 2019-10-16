@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "planttypes/new", component: PlantTypesNewComponent },
   { path: "planttypes/:id", component: PlantTypesNewComponent },
   { path: "plant-details/:id", component: PlantDetailComponent },
-  { path: "location-canvas", component: LocationCanvasComponent }
+  { path: "location-canvas", component: LocationCanvasComponent },
   { path: "login", component: UserLoginComponent },
 ];
 

@@ -33,7 +33,10 @@
       <button (click)="onUpload()">upload</button>
     </div>
   </div>
+</div>
+<div fxLayout.gt-md="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center" class="gauges-group">
   <ngx-gauge
+    class="gauges"
     [type]="gaugeType"
     cap="round"
     [max]="waterGauge.max"
@@ -44,9 +47,10 @@
   >
   </ngx-gauge>
   <ngx-gauge
+    class="gauges"
     [type]="gaugeType"
     cap="round"
-    max="lightGauge.max"
+    [max]="lightGauge.max"
     thick="10"
     [value]="lightGauge.value"
     [label]="lightGauge.label"
@@ -54,14 +58,16 @@
   >
   </ngx-gauge>
   <ngx-gauge
-  [type]="gaugeType"
-  cap="round"
-  max="tempGauge.max"
-  min="tempGauge.min"
-  thick="10"
-  [value]="tempGauge.value"
-  [label]="tempGauge.label"
-  [append]="tempGauge.text"
->
-</ngx-gauge>
+    class="gauges"
+    [type]="gaugeType"
+    cap="round"
+    [max]="tempGauge.max"
+    [min]="tempGauge.min"
+    thick="10"
+    [value]="tempGauge.value"
+    [label]="tempGauge.label"
+    [append]="tempGauge.text"
+    [thresholds]="tempThreshold"
+  >
+  </ngx-gauge>
 </div>

@@ -6,8 +6,7 @@ export class Plant {
   type?: string;
   water?: number;
   light?: number;
-  minTemp?: number;
-  maxTemp?: number;
+  temp?: number;
   imageUrl?: string;
   coordinates?: object;
   

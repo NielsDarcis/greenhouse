@@ -1,5 +1,5 @@
 <form ngNativeValidate (ngSubmit)="onSubmit()" #plantTypeForm="ngForm" class="example-form">
-  <div div fxLayout="row" fxLayoutAlign="start center">
+  <div fxLayout="row" fxLayoutAlign="start center">
     <h2 *ngIf="plantType.id; else changePlant">Change your {{plantType.name}}</h2>
     <ng-template #changePlant>
       <h2>Add a plant type</h2>

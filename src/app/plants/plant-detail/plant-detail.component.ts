@@ -24,6 +24,7 @@ export class PlantDetailComponent implements OnInit {
   plantType: PlantType;
   plant: Plant = new Plant();
   test:any;
+  tempThreshold: Object;
   gaugeType = "semi";
   waterGauge = {
     value: 0,
@@ -126,6 +127,16 @@ export class PlantDetailComponent implements OnInit {
     this.lightGauge.value = this.plant.light;
     this.lightGauge.max = this.plantType.light;
     this.tempGauge.min = this.plantType.minTemp;
-    
+    this.tempGauge.max = this.plantType.maxTemp;
+    this.tempGauge.value = this.plant.temp;
+
+    let tempDiff = this.plantType.maxTemp - this.plantType.minTemp;
+    this.tempThreshold = {
+      [(this.plantType.minTemp)]: {color: 'red'},
+      [(this.plantType.minTemp+ tempDiff *0.1)]: {color: 'orange'}, 
+      [(this.plantType.minTemp+ tempDiff *0.2)]: {color: 'green'},
+      [(this.plantType.minTemp+ tempDiff *0.8)]: {color: 'orange'},
+      [(this.plantType.minTemp+ tempDiff *0.9)]: {color: 'red'}
+    };
   }
 }
