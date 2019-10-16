@@ -25,16 +25,18 @@ label{
 }
 
 table{
-    margin: 5 auto 5 auto
+    margin: 5 auto 5 auto;
+    width: 100%;
+    
 }
 
 tr{
   border: black solid 2px;
-  height: 30px;
+  width: auto;
 }
 
 td{
     border: black solid 2px;
-    width:20%;
+    width: auto;
     height:35px;
 }

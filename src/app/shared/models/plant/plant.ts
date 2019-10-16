@@ -6,7 +6,8 @@ export class Plant {
   type?: string;
   water?: number;
   imageUrl?: string;
-  coordinates?: object;
+  x?: any;
+  y?: any;
   
   constructor() {
     this.name = "";
