@@ -5,4 +5,5 @@ export class PlantType {
     minTemp: number = 0;
     maxTemp: number = 0;
     light: number = 0;
+    waterFreq: number = 0;
 }
