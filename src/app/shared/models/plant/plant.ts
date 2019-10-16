@@ -9,6 +9,8 @@ export class Plant {
   minTemp?: number;
   maxTemp?: number;
   imageUrl?: string;
+  coordinates?: object;
+  
   constructor() {
     this.name = "";
     this.location = "";

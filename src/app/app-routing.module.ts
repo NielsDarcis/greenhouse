@@ -1,12 +1,13 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PlantsListComponent } from "./plants/plants-list/plants-list.component";
+import { LocationCanvasComponent } from "./locations/location-canvas/location-canvas.component";
+
 import { UserLoginComponent } from './users/user-login/user-login.component'
 import { PlantTypesComponent } from "./plants/plant-types/plant-types.component";
 import { PlantTypesNewComponent } from "./plants/plant-types-new/plant-types-new.component";
 import { PlantDetailComponent } from "./plants/plant-detail/plant-detail.component";
-import { PlantNewComponent } from './plants/plant-new/plant-new.component';
-
+import { PlantNewComponent } from "./plants/plant-new/plant-new.component";
 
 const routes: Routes = [
   { path: "home", component: PlantsListComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: "planttypes/new", component: PlantTypesNewComponent },
   { path: "planttypes/:id", component: PlantTypesNewComponent },
   { path: "plant-details/:id", component: PlantDetailComponent },
+  { path: "location-canvas", component: LocationCanvasComponent }
   { path: "login", component: UserLoginComponent },
 ];
 
@@ -23,4 +25,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {}

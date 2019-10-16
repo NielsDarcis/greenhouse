@@ -17,8 +17,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxGaugeModule } from 'ngx-gauge';
 import { AuthService } from './services/auth.service'
 
-import { ToCelciusPipe } from './shared/to-celcius.pipe';
-
 import { PlantTypesComponent } from './plants/plant-types/plant-types.component';
 import { PlantTypesNewComponent, PlantTypeNewDialog } from './plants/plant-types-new/plant-types-new.component';
 import { PlantsListComponent } from './plants/plants-list/plants-list.component';
@@ -28,6 +26,8 @@ import { PlantNewComponent } from './plants/plant-new/plant-new.component';
 import { SunMakerComponent } from './shared/sun-maker/sun-maker.component';
 import { FrostMakerComponent } from './shared/frost-maker/frost-maker.component';
 import { FireMakerComponent } from './shared/fire-maker/fire-maker.component';
+import { ToCelciusPipe } from './shared/to-celcius.pipe';
+import { LocationCanvasComponent } from './locations/location-canvas/location-canvas.component';
 import { UserLoginComponent } from './users/user-login/user-login.component';
 
 @NgModule({
@@ -44,6 +44,7 @@ import { UserLoginComponent } from './users/user-login/user-login.component';
     PlantDetailComponent,
     PlantNewComponent,
     ToCelciusPipe,
+    LocationCanvasComponent,
     PlantTypeNewDialog,
     UserLoginComponent,
   ],

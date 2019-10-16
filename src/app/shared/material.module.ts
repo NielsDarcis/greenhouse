@@ -14,6 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 import { MatDialogModule } from '@angular/material/dialog';
 
 
@@ -34,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatSliderModule,
     MatSnackBarModule,
+    DragDropModule,
     MatDialogModule,
   ],
   exports: [
@@ -52,6 +55,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatSliderModule,
     MatSnackBarModule,
+    DragDropModule,
     MatDialogModule,
   ],
   declarations: [],
