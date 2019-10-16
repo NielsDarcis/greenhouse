@@ -24,6 +24,10 @@ export class PlantDetailComponent implements OnInit {
   plantType: PlantType = new PlantType;
   plant: Plant = new Plant();
 
+  gaugeType = "semi";
+  gaugeValue = 28.3;
+  gaugeLabel = "Speed";
+  gaugeAppendText = "km/hr";
   constructor(
     private activeRoute: ActivatedRoute,
     private plantService: PlantsService,
