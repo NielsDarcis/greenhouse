@@ -17,17 +17,34 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class PlantDetailComponent implements OnInit {
   faLeaf= faLeaf;
   selectedFile: File = null;
-  selectedValue: String;
+  plantTypeSelect: string;
   plantId: string;
   plantList: Plant[];
   plantTypeList: PlantType []; 
-  plantType: PlantType = new PlantType;
+  plantType: PlantType;
   plant: Plant = new Plant();
-
+  test:any;
   gaugeType = "semi";
-  gaugeValue = 28.3;
-  gaugeLabel = "Speed";
-  gaugeAppendText = "km/hr";
+  waterGauge = {
+    value: 0,
+    label: "Water",
+    text: "Rel Hum",
+    max: 0
+  };
+  lightGauge = {
+    value: 0,
+    label: "Light",
+    text: "Lumen",
+    max: 0
+  };
+  tempGauge = {
+    value: 0,
+    label: "Temp",
+    text: "degr",
+    max: 0,
+    min: 0
+  };
+
   constructor(
     private activeRoute: ActivatedRoute,
     private plantService: PlantsService,
@@ -64,11 +81,11 @@ export class PlantDetailComponent implements OnInit {
    
   }
 
-  async getPlantById() {
-    this.plantList = await this.plantService.getAll();
-    this.plant = this.plantList.find(plant => plant.Id === this.plantId);
+  async getPlantById(id: string) {
+    let plantList = await this.plantService.getAll();
+    this.plant = plantList.find(plant => plant.Id === id);
   }
-
+  
   // update a plant 
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
@@ -93,13 +110,22 @@ export class PlantDetailComponent implements OnInit {
 
   // haal lijst van type planten op
   async getPlantTypes() {
-    this.plantTypeList = await this.plantTypeService.getAll();
+    let plantTypeList = await this.plantTypeService.getAll();
+    return plantTypeList;
   }
 
-  ngOnInit() {
-    let id = this.activeRoute.snapshot.paramMap.get("id");
-    this.plantId = id;
-    this.getPlantById();
-    this.getPlantTypes();
+  async ngOnInit() {
+    this.plantId = this.activeRoute.snapshot.paramMap.get("id");
+    await this.getPlantById(this.plantId);
+    this.plantTypeList = await this.getPlantTypes();
+    //TODO dirty dirty frontend filter
+    this.plantType = this.plantTypeList.find(plantType => plantType.name === this.plant.type);
+    
+    this.waterGauge.value = this.plant.water;
+    this.waterGauge.max = this.plantType.moist;
+    this.lightGauge.value = this.plant.light;
+    this.lightGauge.max = this.plantType.light;
+    this.tempGauge.min = this.plantType.minTemp;
+    
   }
 }

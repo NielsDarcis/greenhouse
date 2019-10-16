@@ -1,38 +1,67 @@
-<div fxLayout="row" fxLayoutAlign="start end"  >
-  <form (ngSubmit)="onSubmit()" #plantForm="ngForm"  fxFlex="60">
+<div fxLayout="row" fxLayoutAlign="start end">
+  <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="60">
     <div div fxLayout="row" fxLayoutAlign="start center">
       <h2>Plant Detail</h2>
       <fa-icon [icon]="faLeaf" class="icon-leaf"></fa-icon>
-      <mat-icon class="icon-clear" routerLink="/home" >clear</mat-icon>     
+      <mat-icon class="icon-clear" routerLink="/home">clear</mat-icon>
     </div>
     <label>Name:</label>
     <input [(ngModel)]="plant.name" name="name" class="block" />
     <mat-label>Type:</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="plantTypeList">
-        <mat-option *ngFor="let plant of plantTypeList" [value]="plant.id">
-            {{plant.name}}
-          </mat-option>
+    <mat-select [(ngModel)]="plant.type" name="plantTypeList">
+      <mat-option
+        *ngFor="let plantType of plantTypeList"
+        [value]="plantType.name"
+      >
+        {{ plantType.name }}
+      </mat-option>
     </mat-select>
     <label>Location:</label>
     <input [(ngModel)]="plant.location" name="location" class="block" />
     <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
-      <button type="submit" class="button-style" >Save</button>
+      <button type="submit" class="button-style">Save</button>
       <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>
     </div>
   </form>
   <div fxFlex="40">
     <div style="width:50%; height:50%">
-      <img [src]="plant.imageUrl" width=200px height=200px>
+      <img [src]="plant.imageUrl" width="200px" height="200px" />
     </div>
     <div>
       <h3>Image Upload</h3>
-      <input type="file" (change)="onFileSelected($event)">
+      <input type="file" (change)="onFileSelected($event)" />
       <button (click)="onUpload()">upload</button>
     </div>
   </div>
-  <ngx-gauge [type]="gaugeType" 
-           [value]="gaugeValue" 
-           [label]="gaugeLabel"  
-           [append]="gaugeAppendText">
+  <ngx-gauge
+    [type]="gaugeType"
+    cap="round"
+    [max]="waterGauge.max"
+    thick="10"
+    [value]="waterGauge.value"
+    [label]="waterGauge.label"
+    [append]="waterGauge.text"
+  >
   </ngx-gauge>
+  <ngx-gauge
+    [type]="gaugeType"
+    cap="round"
+    max="lightGauge.max"
+    thick="10"
+    [value]="lightGauge.value"
+    [label]="lightGauge.label"
+    [append]="lightGauge.text"
+  >
+  </ngx-gauge>
+  <ngx-gauge
+  [type]="gaugeType"
+  cap="round"
+  max="tempGauge.max"
+  min="tempGauge.min"
+  thick="10"
+  [value]="tempGauge.value"
+  [label]="tempGauge.label"
+  [append]="tempGauge.text"
+>
+</ngx-gauge>
 </div>
