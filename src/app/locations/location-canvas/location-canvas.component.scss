@@ -10,11 +10,31 @@ label{
 }
 
 .list{
-    background: yellow
+    background: #c6ccbc;
+    margin-top: -5px;
+
 }
 .listItem{
     background: grey;
     opacity: .9;
-    width: 30%;
+    width: 20%;
     margin: 5px;
+    columns: 3;
+    list-style-type: none;
+    line-height: 25px;
+}
+
+table{
+    margin: 5 auto 5 auto
+}
+
+tr{
+  border: black solid 2px;
+  height: 30px;
+}
+
+td{
+    border: black solid 2px;
+    width:20%;
+    height:35px;
 }

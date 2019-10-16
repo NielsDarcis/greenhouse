@@ -1,10 +1,17 @@
-<div class="list">
-  <div  *ngFor="let test of testList" class="listItem" draggable="true">
-      <div draggable="true">
-          {{ test.name }}
-
-      </div>
-  </div>
+<div class="list" >
+  <ul #listitem>
+    <li *ngFor="let plant of plantList"
+      class="listItem"
+      cdkDrag
+      [cdkDragFreeDragPosition]="plant.coordinates"
+      (click)="coordinates($event, plant)"
+      draggable="true"
+    >
+      {{ plant.name }}
+    </li>
+  </ul>
 </div>
-
-<canvas></canvas>
+<table  >
+    <tr *ngFor="let item of xAxis">lol</tr>
+        <td></td>
+</table>

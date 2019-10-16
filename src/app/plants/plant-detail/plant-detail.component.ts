@@ -74,7 +74,6 @@ export class PlantDetailComponent implements OnInit {
 
   // remove a plant
   deletePlant(){
-    console.log(this.plantId)
     this.plantService.delete(this.plantId);
     this.router.navigate(['home']);
     this.openSnackBar('Plant Deleted', 'Succeed')
