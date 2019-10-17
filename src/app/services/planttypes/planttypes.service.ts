@@ -1,30 +1,42 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { PlantType } from 'src/app/shared/models/plant-type';
-import { take } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { AngularFireDatabase } from "@angular/fire/database";
+import { PlantType } from "src/app/shared/models/plant-type";
+import { take } from "rxjs/operators";
+import * as firebase from 'firebase';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PlanttypesService {
   item: Observable<any>;
   itemList: any;
-  database: string= 'plantTypes';
-
-  constructor(private db: AngularFireDatabase) { 
+  database: string = "plantTypes";
+   
+  constructor(private db: AngularFireDatabase) {
     this.itemList = this.db.list(this.database);
     this.item = this.db.object(this.database).valueChanges();
   }
-  
-  createId(){
-    return this.db.createPushId() 
+
+  createId() {
+    return this.db.createPushId();
   }
   async getAll() {
-    return await this.db.list<PlantType>(this.database).valueChanges().pipe(take(1)).toPromise();
+    return await this.db
+      .list<PlantType>(this.database)
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise();
   }
-  async getById(id:string){
-    return await this.db.object<PlantType>(this.database+"/"+id).valueChanges().pipe(take(1)).toPromise();
+  async getById(id: string) {
+    return await this.db
+      .object<PlantType>(this.database + "/" + id)
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise();
+  }
+  async getSorted(){
+  return firebase.database().ref('plantTypes').orderByChild('name');
   }
   create(object: PlantType) {
     object.id = this.db.createPushId();
@@ -32,13 +44,13 @@ export class PlanttypesService {
     object.id = key;
     this.itemList.update(key, object);
   }
-  update(key: string, newPlantType: PlantType) { 
-    this.itemList.update(key,  newPlantType);
+  update(key: string, newPlantType: PlantType) {
+    this.itemList.update(key, newPlantType);
   }
   delete(key: string) {
     this.itemList.remove(key);
   }
-  deleteAll(){
+  deleteAll() {
     this.itemList.remove();
   }
 }

@@ -8,7 +8,6 @@
     class="btn"
     (click)="onfilter($event)"
     aria-label="filter"
-    fxFlex="5"
     noshrink
     nogrow
   >
@@ -20,11 +19,12 @@
   fxLayoutAlign="space-between center"
   class="plantListHeader"
 >
-  <span fxFlex="20" class="badge">Plant Type Name</span>
-  <span fxFlex="20" class="badge">Water</span>
-  <span fxFlex="20" class="badge">Sun</span>
-  <span fxFlex="20" class="badge">min Temp</span>
-  <span fxFlex="20" class="badge">max Temp</span>
+  <span fxFlex="16" class="badge">Plant Type Name</span>
+  <span fxFlex="16" class="badge">Water</span>
+  <span fxFlex="16" class="badge">water Freq</span>
+  <span fxFlex="16" class="badge">Sun</span>
+  <span fxFlex="16" class="badge">min Temp</span>
+  <span fxFlex="16" class="badge">max Temp</span>
 </mat-card>
 <ul *ngIf="plantTypeList.length > 0; else emptyPage" class="planttypelist">
   <li class="planttype" *ngFor="let item of printList">
@@ -34,10 +34,10 @@
       fxLayout="column"
       fxLayoutAlign="space-between center"
     >
-      <span fxFlex.gt-xs="20" class="badge name">
+      <span fxFlex.gt-xs="16" class="badge name">
         {{ item.name }}
       </span>
-      <span fxFlex.gt-xs="20" class="badge">
+      <span fxFlex.gt-xs="16" class="badge">
         <span fxHide.gt-xs class="badge">water:</span>
         {{ item.moist }} RH
         <drop-maker
@@ -47,7 +47,18 @@
         >
         </drop-maker>
       </span>
-      <span fxFlex.gt-xs="20" class="badge">
+
+      <span fxFlex.gt-xs="16" class="badge">
+        <span fxHide.gt-xs class="badge">water Freq: </span
+        >{{ item.waterFreq }} per week
+        <time-maker
+          *ngIf="item.waterFreq"
+          [printValue]="item.waterFreq"
+          fxLayout.xs="row inline"
+        >
+        </time-maker>
+      </span>
+      <span fxFlex.gt-xs="16" class="badge">
         <span fxHide.gt-xs class="badge">sun:</span>
         {{ item.light }} CD
         <sun-maker
@@ -57,7 +68,7 @@
         >
         </sun-maker>
       </span>
-      <span fxFlex.gt-xs="20" class="badge">
+      <span fxFlex.gt-xs="16" class="badge">
         <span fxHide.gt-xs class="badge">min temp:</span>
         {{ item.minTemp | toCelcius }}
         <frost-maker
@@ -67,7 +78,7 @@
         >
         </frost-maker>
       </span>
-      <span fxFlex.gt-xs="20" class="badge"
+      <span fxFlex.gt-xs="16" class="badge"
         ><span fxHide.gt-xs class="badge">max temp:</span
         >{{ item.maxTemp | toCelcius }}
         <fire-maker
