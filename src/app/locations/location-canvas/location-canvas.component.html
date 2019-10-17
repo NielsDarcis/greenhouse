@@ -11,13 +11,13 @@
   </ul>
 </div>
 <table>
-  <tr *ngFor="let row of locations; let rowIndex = index">
+  <tr *ngFor="let row of location.positions; let rowIndex = index">
     <td
       *ngFor="let item of row; let colIndex = index"
       (drop)="drop($event, colIndex, rowIndex)"
       (dragover)="allowDrop($event)"
     >
-      {{item}}
+     <div>{{item.name}}</div> 
     </td>
   </tr>
 </table>
