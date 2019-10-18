@@ -18,15 +18,11 @@ import { Location } from "../../shared/models/location/location";
   styleUrls: ["./location-canvas.component.scss"]
 })
 export class LocationCanvasComponent implements OnInit {
-  @ViewChild("listitem", { static: true }) list!: QueryList<ElementRef>;
-
   item: any;
   plantList: Plant[];
   currentPlant: number;
-  xAxis = Array(10).fill("x");
   location: Location = new Location();
   
-  locations: any[];
 
   constructor(
     private locationService: LocationsService,
@@ -53,24 +49,30 @@ export class LocationCanvasComponent implements OnInit {
   drag(ev, plantIndex: number) {
     this.currentPlant = plantIndex;
   }
+ 
   drop(ev, col, row) {
-    this.location[row][col] = this.plantList[this.currentPlant];
-    console.log(this.location[row][col]);
-    this.save();
+    this.location.positions[row][col] = this.plantList[this.currentPlant];
+    this.plantList.splice(this.currentPlant);
+
+
   }
 
   save() {
-    if(this.location.id){
-      this.locationService.create({ positions: this.locations });
+    if(!this.location){
+      this.locationService.create({ positions: this.location.positions });
     }
+    else{
+      console.log('error');
+    };
+  
   }
 
   async getLocation(){
-    
     const p =  await this.locationService.getAll();
-    this.locations = p[0].positions;
-    console.log(p[0].positions)
+    if(p[0]){
+      this.location.positions = p[0].positions
   }
+}
 
   ngOnInit() {
     this.getPlants();
