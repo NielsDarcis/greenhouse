@@ -60,7 +60,7 @@ export class LocationCanvasComponent implements OnInit {
   }
 
   async save() {
-    if(!this.location){
+    if(!this.location.id){
       this.locationService.create({ positions: this.location.positions });
     }
     else{
