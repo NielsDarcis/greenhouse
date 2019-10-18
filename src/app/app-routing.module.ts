@@ -12,14 +12,14 @@ import { PlantDetailComponent } from "./plants/plant-detail/plant-detail.compone
 import { PlantNewComponent } from "./plants/plant-new/plant-new.component";
 
 const routes: Routes = [
-  { path: "home", component: PlantsListComponent },
-  { path: "", redirectTo: "login", pathMatch: "full" },
+  { path: "home", component: PlantsListComponent, canActivate: [LoggedInGuard] },
+  { path: "", redirectTo: "home", pathMatch: "full" },
   { path:"plant/new", component: PlantNewComponent, canActivate: [LoggedInGuard] },
   { path: "planttypes", component: PlantTypesComponent, canActivate: [LoggedInGuard]  },
   { path: "planttypes/new", component: PlantTypesNewComponent, canActivate: [LoggedInGuard]  },
   { path: "planttypes/:id", component: PlantTypesNewComponent, canActivate: [LoggedInGuard]  },
   { path: "plant-details/:id", component: PlantDetailComponent, canActivate: [LoggedInGuard]  },
-  { path: "location-canvas", component: LocationCanvasComponent },
+  { path: "location-canvas", component: LocationCanvasComponent, canActivate: [LoggedInGuard] },
   { path: "login", component: UserLoginComponent },
 ];
 

@@ -7,7 +7,9 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar></mat-toolbar>
+    <mat-toolbar>
+
+    </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#" routerLink="/home">My Plants</a>
       <a mat-list-item href="#" routerLink="/planttypes">Plant Types</a>
@@ -26,6 +28,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <!-- <img src="../../assets/images/logo-navigation.png" /> -->
+      <span fxFlex></span>
+      <ngx-auth-firebaseui-avatar></ngx-auth-firebaseui-avatar>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
