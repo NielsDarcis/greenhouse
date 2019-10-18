@@ -23,7 +23,6 @@ export class LocationCanvasComponent implements OnInit {
   item: any;
   plantList: Plant[];
   currentPlant: number;
-  xAxis = Array(10).fill("x");
   location: Location = new Location();
   
 
@@ -52,8 +51,13 @@ export class LocationCanvasComponent implements OnInit {
   drag(ev, plantIndex: number) {
     this.currentPlant = plantIndex;
   }
+ 
   drop(ev, col, row) {
     this.location.positions[row][col] = this.plantList[this.currentPlant];
+    console.log(this.currentPlant);
+    this.plantList.splice(this.currentPlant);
+    console.log(this.plantList);
+
   }
 
   save() {
@@ -62,10 +66,8 @@ export class LocationCanvasComponent implements OnInit {
   }
 
   async getLocation(){
-    
     const p =  await this.locationService.getAll();
     this.location.positions = p[0].positions;
-    console.log(p[0].positions)
   }
 
   ngOnInit() {

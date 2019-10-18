@@ -18,7 +18,7 @@
       (drop)="drop($event, colIndex, rowIndex)"
       (dragover)="allowDrop($event)"
     >
-     <div *ngIf="item !== 'null'" class="droppoint">{{item.name}}</div> 
+     <div *ngIf="item !== 'null'" class="droppoint" draggable="true">{{item.name}}</div> 
     </td>
   </tr>
 </table>
