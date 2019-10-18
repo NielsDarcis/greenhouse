@@ -54,14 +54,17 @@ export class LocationCanvasComponent implements OnInit {
     this.location.positions[row][col] = this.plantList[this.currentPlant];
     console.log(this.currentPlant)
     console.log(this.plantList)
-    this.plantList.splice(this.currentPlant,1);
-
+    this.plantList[this.currentPlant].location=false;
+    this.plantService.update(this.plantList[this.currentPlant].Id, this.plantList[this.currentPlant])
+    // this.plantList.splice(this.currentPlant,1);
+    this.save()
 
   }
 
   async save() {
     if(!this.location.id){
       this.locationService.create({ positions: this.location.positions });
+      
     }
     else{
       this.locationService.update(this.location.id, { positions: this.location.positions });

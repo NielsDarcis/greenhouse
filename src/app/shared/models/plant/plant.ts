@@ -2,7 +2,7 @@ export class Plant {
   
   Id?: any;
   name?: string;
-  location?: string;
+  location?: boolean;
   type?: string;
   water?: number;
   light?: number;
@@ -11,7 +11,7 @@ export class Plant {
  
   constructor() {
     this.name = "";
-    this.location = "";
+    this.location = true;
     this.type = "";
   }
 }

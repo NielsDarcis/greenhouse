@@ -6,7 +6,9 @@
       draggable="true"
       (dragstart)="drag($event, index)"
     >
+    <div *ngIf="plant.location">
       {{ plant.name }}
+    </div>
     </li>
   </ul>
 </div>
