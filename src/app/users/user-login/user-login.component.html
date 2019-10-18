@@ -1,4 +1,7 @@
 <ngx-auth-firebaseui
     [guestEnabled]="false"
-    [providers]="['google', 'facebook', 'twitter']"
+    [providers]="['google', 'github']"
+    goBackURL="/login"
+    (onSuccess)="welcomeUser()" 
+    (onError)="printError()"
 ></ngx-auth-firebaseui>

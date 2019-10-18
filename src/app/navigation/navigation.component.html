@@ -29,7 +29,9 @@
       </button>
       <!-- <img src="../../assets/images/logo-navigation.png" /> -->
       <span fxFlex></span>
-      <ngx-auth-firebaseui-avatar></ngx-auth-firebaseui-avatar>
+      <ngx-auth-firebaseui-avatar
+        (onSignOut)="goHome()"
+      ></ngx-auth-firebaseui-avatar>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
