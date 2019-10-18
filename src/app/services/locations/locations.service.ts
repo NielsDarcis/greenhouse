@@ -30,6 +30,13 @@ export class LocationsService {
     object.id = key;
     this.locationList.update(key, object);
   }
+  async getById(id: string) {
+    return await this.db
+      .object<Location>(this.database + "/" + id)
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise();
+  }
   update(key: string, newLocation: Location){
     this.locationList.update(key, newLocation);
   }

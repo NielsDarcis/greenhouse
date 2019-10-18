@@ -60,20 +60,19 @@ export class LocationCanvasComponent implements OnInit {
   }
 
   async save() {
-    const p =  await this.locationService.getAll();
-    if(!p[0]){
+    if(!this.location){
       this.locationService.create({ positions: this.location.positions });
     }
     else{
-      this.locationService.update(p[0].id, { positions: this.location.positions });
+      this.locationService.update(this.location.id, { positions: this.location.positions });
     };
   
   }
 
   async getLocation(){
-    const p =  await this.locationService.getAll();
-    if(p[0]){
-      this.location.positions = p[0].positions
+    const allLocations =  await this.locationService.getAll();
+    if(allLocations[0]){
+      this.location = allLocations[0];
   }
 }
 
