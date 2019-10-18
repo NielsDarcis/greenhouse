@@ -75,7 +75,7 @@ import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
       enableFirestoreSync: true, // enable/disable autosync users with firestore
       toastMessageOnAuthSuccess: false, // whether to open/show a snackbar message on auth success - default : true
       toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
-      authGuardFallbackURL: "/loggedout", // url for unauthenticated users - to use in combination with canActivate feature on a route
+      authGuardFallbackURL: "/login", // url for unauthenticated users - to use in combination with canActivate feature on a route
       authGuardLoggedInURL: "/home", // url for authenticated users - to use in combination with canActivate feature on a route
       passwordMaxLength: 60, // `min/max` input parameters in components should be within this range.
       passwordMinLength: 6, // Password length min/max in forms independently of each componenet min/max.
