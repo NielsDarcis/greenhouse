@@ -10,6 +10,7 @@
     </li>
   </ul>
 </div>
+<button (click)=save()>Save Locations</button>
 <table>
   <tr *ngFor="let row of location.positions; let rowIndex = index">
     <td
@@ -17,7 +18,7 @@
       (drop)="drop($event, colIndex, rowIndex)"
       (dragover)="allowDrop($event)"
     >
-     <div>{{item.name}}</div> 
+     <div *ngIf="item !== 'null'" class="droppoint">{{item.name}}</div> 
     </td>
   </tr>
 </table>

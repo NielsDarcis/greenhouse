@@ -26,7 +26,6 @@ export class LocationCanvasComponent implements OnInit {
   xAxis = Array(10).fill("x");
   location: Location = new Location();
   
-  locations: any[];
 
   constructor(
     private locationService: LocationsService,
@@ -54,21 +53,18 @@ export class LocationCanvasComponent implements OnInit {
     this.currentPlant = plantIndex;
   }
   drop(ev, col, row) {
-    this.location[row][col] = this.plantList[this.currentPlant];
-    console.log(this.location[row][col]);
-    this.save();
+    this.location.positions[row][col] = this.plantList[this.currentPlant];
   }
 
   save() {
-    if(this.location.id){
-      this.locationService.create({ positions: this.locations });
-    }
+      this.locationService.create({ positions: this.location.positions });
+    
   }
 
   async getLocation(){
     
     const p =  await this.locationService.getAll();
-    this.locations = p[0].positions;
+    this.location.positions = p[0].positions;
     console.log(p[0].positions)
   }
 

@@ -8,6 +8,7 @@ import { PlantType } from "../../shared/models/plant-type";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AngularFireStorage } from "@angular/fire/storage";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-plant-detail",
@@ -146,8 +147,6 @@ export class PlantDetailComponent implements OnInit {
   }
 
   getFakeTemp() {
-    const { Observable } = require("rxjs");
-
     const ob = new Observable(sub => {
       let timeout = null;
 
@@ -164,10 +163,8 @@ export class PlantDetailComponent implements OnInit {
       return () => clearTimeout(timeout);
     });
 
-    ob.subscribe(res => {
-      this.tempGauge.value=res;
+    ob.subscribe((res:number) => {
+      this.tempGauge.value = res;
     });
   }
-
-
 }
