@@ -10,6 +10,5 @@ export class UserLoginComponent implements OnInit {
   constructor(public auth: AuthService) {}
 
   ngOnInit() {
-    this.auth.register('fredvdvd+6@gmail.com', "testtest")
   }
 }

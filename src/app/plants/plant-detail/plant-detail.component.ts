@@ -147,6 +147,8 @@ export class PlantDetailComponent implements OnInit {
   }
 
   getFakeTemp() {
+
+
     const ob = new Observable(sub => {
       let timeout = null;
 
@@ -164,7 +166,7 @@ export class PlantDetailComponent implements OnInit {
     });
 
     ob.subscribe((res:number) => {
-      this.tempGauge.value = res;
+      this.tempGauge.value=res;
     });
   }
 }

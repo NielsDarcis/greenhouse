@@ -30,6 +30,7 @@
     "firebase": "^7.0.0",
     "fuse.js": "^3.4.5",
     "hammerjs": "^2.0.8",
+    "ngx-auth-firebaseui": "^v3.4.2",
     "ngx-gauge": "^1.0.0-beta.11",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
