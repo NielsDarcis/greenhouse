@@ -62,12 +62,12 @@ export class LocationCanvasComponent implements OnInit {
 
   }
 
-  remove(ev){
-   
-    console.log(ev);
-    ev.location = true;
-    this.plantService.update(ev.Id, ev);
-
+  remove(ev, col, row){
+    let plant = this.location.positions[row][col];
+    plant.location = true;
+    this.plantService.update(plant.Id, plant);
+    this.location.positions[row][col]="null";
+    this.locationService.update(this.location.id, {positions: this.location.positions});
   }
 
   async save() {

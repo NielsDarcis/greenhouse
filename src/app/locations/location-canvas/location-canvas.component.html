@@ -23,7 +23,7 @@
     <div *ngIf="item !== 'null'" >
         <div fxLayout="row" fxLayoutAlign="start center" >
       <fa-icon fxFlex="25" [icon]="faMapMarkerAlt" class="marker"></fa-icon>
-      <mat-icon fxFlex="20" class="icon-clear"  (click)="remove($event)">clear</mat-icon>
+      <mat-icon fxFlex="20" class="icon-clear"  (click)="remove($event, colIndex, rowIndex)">clear</mat-icon>
         </div>
       <div>{{item.name}}</div>
      </div> 
