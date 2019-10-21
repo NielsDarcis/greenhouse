@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { AngularFireDatabase, AngularFireObject } from "@angular/fire/database";
+import { Space } from "src/app/shared/models/space/space";
 
 import { take } from "rxjs/operators";
 
@@ -36,8 +37,8 @@ export class SpacesService {
       object.Id = key;
       this.itemList.update(key, object);
     }
-    update(key: string, newPlant: Space){
-      this.itemList.update(key, newPlant);
+    update(key: string, newSpace: Space){
+      this.itemList.update(key, newSpace);
     }
     delete(key: string) {
       this.itemList.remove(key);
