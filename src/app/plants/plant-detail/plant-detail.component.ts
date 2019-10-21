@@ -6,6 +6,7 @@ import { PlanttypesService } from "../../services/planttypes/planttypes.service"
 import { Plant } from "../../shared/models/plant/plant";
 import { PlantType } from "../../shared/models/plant-type";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { Observable } from "rxjs";
@@ -17,6 +18,7 @@ import { Observable } from "rxjs";
 })
 export class PlantDetailComponent implements OnInit {
   faLeaf = faLeaf;
+  faImage = faImage;
   selectedFile: File = null;
   plantTypeSelect: string;
   plantId: string;

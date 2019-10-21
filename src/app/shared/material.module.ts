@@ -19,6 +19,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -57,6 +58,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSnackBarModule,
     DragDropModule,
     MatDialogModule,
+    
   ],
   declarations: [],
 })

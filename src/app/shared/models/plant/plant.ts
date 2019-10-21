@@ -1,4 +1,6 @@
 import { PlantType } from '../plant-type';
+import { Space } from '../space/space';
+
 
 export class Plant {
   
@@ -8,6 +10,7 @@ export class Plant {
   type?: PlantType;
   water? = 7;
   light? = 7;
+  space?: Space;
   temp?: number;
   imageUrl?: string;
   actions? = [];
