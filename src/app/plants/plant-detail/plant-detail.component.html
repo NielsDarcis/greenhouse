@@ -8,7 +8,8 @@
     <label>Name:</label>
     <input [(ngModel)]="plant.name" name="name" class="block" />
     <mat-label>Type:</mat-label>
-    <mat-select [(ngModel)]="plant.type" name="plantTypeList">
+
+    <mat-select *ngIf="plant.type" [placeholder]="plant.type.name" (selectionChange)="selectType($event)" name="plantTypeList">
       <mat-option
         *ngFor="let plantType of plantTypeList"
         [value]="plantType.name"
@@ -16,6 +17,7 @@
         {{ plantType.name }}
       </mat-option>
     </mat-select>
+
     <label>Location:</label>
     <input [(ngModel)]="plant.location" name="location" class="block" />
     <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">

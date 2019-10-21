@@ -91,6 +91,10 @@ export class PlantDetailComponent implements OnInit {
     this.plant = plantList.find(plant => plant.Id === id);
   }
 
+  selectType(event: any){
+    this.plant.type = event.value;
+  }
+
   // update a plant
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
@@ -119,29 +123,25 @@ export class PlantDetailComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.getPlantTypes();
     this.plantId = this.activeRoute.snapshot.paramMap.get("id");
     await this.getPlantById(this.plantId);
-    this.plantTypeList = await this.getPlantTypes();
-    //TODO dirty dirty frontend filter
-    this.plantType = this.plantTypeList.find(
-      plantType => plantType.name === this.plant.type
-    );
 
     this.waterGauge.value = this.plant.water;
-    this.waterGauge.max = this.plantType.moist;
+    this.waterGauge.max = this.plant.type.moist;
     this.lightGauge.value = this.plant.light;
-    this.lightGauge.max = this.plantType.light;
-    this.tempGauge.min = this.plantType.minTemp;
-    this.tempGauge.max = this.plantType.maxTemp;
+    this.lightGauge.max = this.plant.type.light;
+    this.tempGauge.min = this.plant.type.minTemp;
+    this.tempGauge.max = this.plant.type.maxTemp;
     this.tempGauge.value = this.plant.temp;
 
-    let tempDiff = this.plantType.maxTemp - this.plantType.minTemp;
+    let tempDiff = this.plant.type.maxTemp - this.plant.type.minTemp;
     this.tempThreshold = {
-      [this.plantType.minTemp]: { color: "red" },
-      [this.plantType.minTemp + tempDiff * 0.1]: { color: "orange" },
-      [this.plantType.minTemp + tempDiff * 0.2]: { color: "green" },
-      [this.plantType.minTemp + tempDiff * 0.8]: { color: "orange" },
-      [this.plantType.minTemp + tempDiff * 0.9]: { color: "red" }
+      [this.plant.type.minTemp]: { color: "red" },
+      [this.plant.type.minTemp + tempDiff * 0.1]: { color: "orange" },
+      [this.plant.type.minTemp + tempDiff * 0.2]: { color: "green" },
+      [this.plant.type.minTemp + tempDiff * 0.8]: { color: "orange" },
+      [this.plant.type.minTemp + tempDiff * 0.9]: { color: "red" }
     };
     this.getFakeTemp();
   }

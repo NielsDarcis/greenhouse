@@ -18,22 +18,25 @@
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th
-        class="table-heading"
-        mat-header-cell
-        *matHeaderCellDef
+        class="table-heading" mat-header-cell *matHeaderCellDef
         mat-sort-header
       >
         Name
       </th>
-      <td mat-cell *matCellDef="let plants">{{ plants.name }}</td>
+      <td mat-cell *matCellDef="let plant">{{ plant.name }}</td>
     </ng-container>
     <ng-container matColumnDef="type">
       <th class="table-heading" mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let plants">{{ plants.type }}</td>
+      <td mat-cell *matCellDef="let plant">{{ plant.type.name }}</td>
     </ng-container>
     <ng-container matColumnDef="location">
       <th class="table-heading" mat-header-cell *matHeaderCellDef>Location</th>
-      <td mat-cell *matCellDef="let plants">{{ plants.location }}</td>
+      <td mat-cell *matCellDef="let plant">{{ plant.location }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th class="table-heading" mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let plant">
+        <div *ngFor="let action of plant.actions">{{ action }}</div> </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr

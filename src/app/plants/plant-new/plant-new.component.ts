@@ -14,20 +14,20 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class PlantNewComponent implements OnInit {
   faSeedling=faSeedling;
-  selectedValue: string;
   plantTypeList: PlantType [];
   plant: Plant = new Plant();
 
 
   constructor(private plantService: PlantsService, private router: Router, private _snackBar: MatSnackBar,private plantTypeService: PlanttypesService,) { }
-
+  selectType(event: any){
+    this.plant.type = event.value;
+  }
 
   // voeg een nieuwe plant toe
   onSubmit() {
     this.plantService.create(this.plant);
     this.router.navigate(['home']);
     this.openSnackBar('Plant Create', 'Succeed' )
-    
   }
 
   // haal lijst met type planten op 
