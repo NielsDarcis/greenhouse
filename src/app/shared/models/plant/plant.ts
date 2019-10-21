@@ -1,8 +1,11 @@
+import { Space } from '../space/space';
+
 export class Plant {
   
   Id?: any;
   name?: string;
   location?: boolean;
+  space?: Space;
   type?: string;
   water?: number;
   light?: number;
