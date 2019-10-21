@@ -34,6 +34,7 @@ import { ToCelciusPipe } from "./shared/to-celcius.pipe";
 import { LocationCanvasComponent } from "./locations/location-canvas/location-canvas.component";
 import { UserLoginComponent } from "./users/user-login/user-login.component";
 import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
+import { SpacesComponent } from './spaces/spaces.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
     LocationCanvasComponent,
     PlantTypeNewDialog,
     UserLoginComponent,
-    TimeMakerComponent
+    TimeMakerComponent,
+    SpacesComponent
   ],
   entryComponents: [PlantTypeNewDialog],
   imports: [

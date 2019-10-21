@@ -10,6 +10,7 @@ import { PlantTypesComponent } from "./plants/plant-types/plant-types.component"
 import { PlantTypesNewComponent } from "./plants/plant-types-new/plant-types-new.component";
 import { PlantDetailComponent } from "./plants/plant-detail/plant-detail.component";
 import { PlantNewComponent } from "./plants/plant-new/plant-new.component";
+import { SpacesComponent } from "./spaces/spaces.component";
 
 const routes: Routes = [
   { path: "home", component: PlantsListComponent, canActivate: [LoggedInGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "plant-details/:id", component: PlantDetailComponent, canActivate: [LoggedInGuard]  },
   { path: "location-canvas", component: LocationCanvasComponent, canActivate: [LoggedInGuard] },
   { path: "login", component: UserLoginComponent },
+  { path: "spaces", component: SpacesComponent }
 ];
 
 @NgModule({
