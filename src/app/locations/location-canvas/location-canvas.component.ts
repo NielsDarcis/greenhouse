@@ -11,6 +11,7 @@ import { LocationsService } from "../../services/locations/locations.service";
 import { PlantsService } from "../../services/plants/plants.service";
 import { Plant } from "../../shared/models/plant/plant";
 import { Location } from "../../shared/models/location/location";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-location-canvas",
@@ -18,6 +19,7 @@ import { Location } from "../../shared/models/location/location";
   styleUrls: ["./location-canvas.component.scss"]
 })
 export class LocationCanvasComponent implements OnInit {
+  faMapMarkerAlt = faMapMarkerAlt;
   item: any;
   plantList: Plant[];
   currentPlant: number;
@@ -56,8 +58,15 @@ export class LocationCanvasComponent implements OnInit {
     console.log(this.plantList)
     this.plantList[this.currentPlant].location=false;
     this.plantService.update(this.plantList[this.currentPlant].Id, this.plantList[this.currentPlant])
-    // this.plantList.splice(this.currentPlant,1);
     this.save()
+
+  }
+
+  remove(ev){
+   
+    console.log(ev);
+    ev.location = true;
+    this.plantService.update(ev.Id, ev);
 
   }
 

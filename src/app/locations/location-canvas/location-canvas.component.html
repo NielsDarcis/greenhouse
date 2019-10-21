@@ -13,14 +13,21 @@
   </ul>
 </div>
 <button (click)=save()>Save Locations</button>
-<table>
+<table class="background" >
   <tr *ngFor="let row of location.positions; let rowIndex = index">
     <td
-      *ngFor="let item of row; let colIndex = index"
-      (drop)="drop($event, colIndex, rowIndex)"
-      (dragover)="allowDrop($event)"
+    *ngFor="let item of row; let colIndex = index"
+    (drop)="drop($event, colIndex, rowIndex)"
+    (dragover)="allowDrop($event)"
     >
-     <div *ngIf="item !== 'null'" class="droppoint" draggable="true">{{item.name}}</div> 
+    <div *ngIf="item !== 'null'" >
+        <div fxLayout="row" fxLayoutAlign="start center" >
+      <fa-icon fxFlex="25" [icon]="faMapMarkerAlt" class="marker"></fa-icon>
+      <mat-icon fxFlex="20" class="icon-clear"  (click)="remove($event)">clear</mat-icon>
+        </div>
+      <div>{{item.name}}</div>
+     </div> 
     </td>
   </tr>
 </table>
+
