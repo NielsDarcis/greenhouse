@@ -1,1 +1,14 @@
-<p>spaces works!</p>
+
+<h2>Create a new space</h2>
+<form>
+    <label>Name:</label>
+    <input/>
+    <button>create</button>
+</form>
+<div>
+<h3>upload floorplan:</h3>
+<input type="file" (change)="onFileSelected($event)" />
+      <button (click)="onUpload()">upload</button>
+</div>
+
+

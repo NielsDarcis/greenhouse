@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpacesComponent implements OnInit {
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit() {
   }

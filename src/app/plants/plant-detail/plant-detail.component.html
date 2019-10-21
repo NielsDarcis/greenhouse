@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="start end">
+<div fxLayout="row" fxLayoutAlign="start end" class="padding">
   <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="60">
     <div div fxLayout="row" fxLayoutAlign="start center">
       <h2>Plant Detail</h2>
@@ -23,18 +23,34 @@
       <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>
     </div>
   </form>
-  <div fxFlex="40">
-    <div style="width:50%; height:50%">
-      <img [src]="plant.imageUrl" width="200px" height="200px" />
-    </div>
-    <div>
+
+  <ng-template [ngIf]="plant.imageUrl" [ngIfElse]="defaultIcon">
+    <div fxFlex="40">
+      <div style="width:50%; height:50%">
+        <img [src]="plant.imageUrl" width="200px" height="200px" />
+      </div>
       <h3>Image Upload</h3>
       <input type="file" (change)="onFileSelected($event)" />
       <button (click)="onUpload()">upload</button>
     </div>
-  </div>
+  </ng-template>
+  <ng-template #defaultIcon>
+    <div fxFlex="40">
+      <fa-icon [icon]="faImage" class="default-icon"></fa-icon>
+      <h3>Image Upload</h3>
+      <input type="file" (change)="onFileSelected($event)" />
+      <button (click)="onUpload()">upload</button>
+    </div>
+  </ng-template>
 </div>
-<div fxLayout.gt-md="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center" class="gauges-group">
+
+<div 
+  fxLayout.gt-md="row"
+  fxLayout.sm="column"
+  fxLayout.xs="column"
+  fxLayoutAlign="center center"
+  class="gauges-group padding"
+>
   <ngx-gauge
     class="gauges"
     [type]="gaugeType"
