@@ -24,7 +24,9 @@ import {
 } from "./plants/plant-types-new/plant-types-new.component";
 import { PlantsListComponent } from "./plants/plants-list/plants-list.component";
 import { DropMakerComponent } from "./shared/drop-maker/drop-maker.component";
-import { PlantDetailComponent } from "./plants/plant-detail/plant-detail.component";
+import { PlantDetailComponent,
+  PlantActionDialog
+} from "./plants/plant-detail/plant-detail.component";
 import { PlantNewComponent } from "./plants/plant-new/plant-new.component";
 import { SunMakerComponent } from "./shared/sun-maker/sun-maker.component";
 import { FrostMakerComponent } from "./shared/frost-maker/frost-maker.component";
@@ -53,12 +55,13 @@ import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
     ToCelciusPipe,
     LocationCanvasComponent,
     PlantTypeNewDialog,
+    PlantActionDialog,
     UserLoginComponent,
     TimeMakerComponent,
     RoomComponent,
     RoomsListComponent
   ],
-  entryComponents: [PlantTypeNewDialog],
+  entryComponents: [PlantTypeNewDialog, PlantActionDialog],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -13,9 +13,9 @@ import { MatTableDataSource } from "@angular/material/table";
 export class PlantsListComponent implements OnInit {
   plantList: Plant[];
   dataSource: any;
-  plant: Plant = new Plant(); 
-  columnsToDisplay = ["name", "type", "location","actions"];
-  threshold =0.1
+  plant: Plant = new Plant();
+  columnsToDisplay = ["name", "type", "location", "actions"];
+  threshold = 0.1;
   constructor(private plantService: PlantsService, private router: Router) {}
 
   async getPlants() {
@@ -36,26 +36,28 @@ export class PlantsListComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  checkPlantThresholds(plant: Plant){
-    plant.actions=[];
-    if( plant.temp>plant.type.maxTemp*(1-this.threshold) ){
-      plant.actions.push("hot")
+  checkPlantThresholds(plant: Plant) {
+    plant.actions = [];
+    let tempDiff = plant.type.maxTemp - Math.abs(plant.type.minTemp);
+    if (plant.temp > (plant.type.maxTemp - tempDiff*(1 - this.threshold))) {
+      console.log((plant.type.maxTemp - tempDiff*(1 - this.threshold)))
+      plant.actions.push("hot");
     }
-    if( plant.temp<plant.type.minTemp*this.threshold ){
-      plant.actions.push("cold")
+    if (plant.temp < ( plant.type.minTemp + tempDiff * this.threshold)) {
+      plant.actions.push("cold");
     }
-    if( plant.water<plant.type.moist*this.threshold ){
-      plant.actions.push("dry")
+    if (plant.water < plant.type.moist * this.threshold) {
+      plant.actions.push("dry");
     }
-    if( plant.light<plant.type.light*this.threshold){
-      plant.actions.push("dark")
+    if (plant.light < plant.type.light * this.threshold) {
+      plant.actions.push("dark");
     }
-    return plant
+    return plant;
   }
-  checkAllPlantsThresholds(plantsList: Plant[]){
+  checkAllPlantsThresholds(plantsList: Plant[]) {
     let newPlantList = [];
-    for(let plant of plantsList){
-      newPlantList.push(this.checkPlantThresholds(plant))
+    for (let plant of plantsList) {
+      newPlantList.push(this.checkPlantThresholds(plant));
     }
     return newPlantList;
   }

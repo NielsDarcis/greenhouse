@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { PlantsService } from "../../services/plants/plants.service";
@@ -10,7 +10,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { Observable } from "rxjs";
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: "app-plant-detail",
   templateUrl: "./plant-detail.component.html",
@@ -29,6 +29,7 @@ export class PlantDetailComponent implements OnInit {
   test: any;
   tempThreshold: Object;
   gaugeType = "semi";
+  threshold =0.1;
   waterGauge = {
     value: 0,
     label: "Water",
@@ -55,7 +56,8 @@ export class PlantDetailComponent implements OnInit {
     private plantTypeService: PlanttypesService,
     private router: Router,
     private _snackBar: MatSnackBar,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    public dialog: MatDialog,
   ) {}
 
   onFileSelected(event) {
@@ -93,7 +95,7 @@ export class PlantDetailComponent implements OnInit {
     this.plant = plantList.find(plant => plant.Id === id);
   }
 
-  selectType(event: any){
+  selectType(event: any) {
     this.plant.type = event.value;
   }
 
@@ -123,13 +125,30 @@ export class PlantDetailComponent implements OnInit {
     let plantTypeList = await this.plantTypeService.getAll();
     return plantTypeList;
   }
-
+  checkPlantThresholdsforAction(plant: Plant){
+    plant.actions=[];
+    if( plant.temp>plant.type.maxTemp*(1-this.threshold) ){
+      plant.actions.push("hot")
+    }
+    if( plant.temp<plant.type.minTemp*this.threshold ){
+      plant.actions.push("cold")
+    }
+    if( plant.water<plant.type.moist*this.threshold ){
+      plant.actions.push("dry")
+    }
+    if( plant.light<plant.type.light*this.threshold){
+      plant.actions.push("dark")
+    }
+    if(plant.actions.length !== 0){
+      this.openDialog(plant)
+    }
+  }
   async ngOnInit() {
     this.getPlantTypes();
     this.plantId = this.activeRoute.snapshot.paramMap.get("id");
     await this.getPlantById(this.plantId);
 
-    let tempDiff = this.plant.type.maxTemp - this.plant.type.minTemp;
+    let tempDiff = this.plant.type.maxTemp - Math.abs(this.plant.type.minTemp);
     this.tempThreshold = {
       [this.plant.type.minTemp]: { color: "red" },
       [this.plant.type.minTemp + tempDiff * 0.1]: { color: "orange" },
@@ -137,12 +156,13 @@ export class PlantDetailComponent implements OnInit {
       [this.plant.type.minTemp + tempDiff * 0.8]: { color: "orange" },
       [this.plant.type.minTemp + tempDiff * 0.9]: { color: "red" }
     };
+    this.checkPlantThresholdsforAction(this.plant)
     this.getFakeTemp();
+
   }
 
   getFakeTemp() {
-
-    let result: number
+    let result: number;
     const ob = new Observable(sub => {
       let timeout = null;
 
@@ -159,8 +179,42 @@ export class PlantDetailComponent implements OnInit {
       return () => clearTimeout(timeout);
     });
 
-    ob.subscribe((res:number) => {
-      this.plant.temp=res;
+    ob.subscribe((res: number) => {
+      this.plant.temp = res;
     });
+  }
+
+  openDialog(plant:any): void {
+    const dialogRef = this.dialog.open(PlantActionDialog, {
+      width: "250px",
+      data: { plant:plant }
+    });
+  }
+}
+
+@Component({
+  selector: "plant-action-dialog",
+  templateUrl: "plant-action-dialog.component.html"
+})
+export class PlantActionDialog {
+  constructor(
+    public dialogRef: MatDialogRef<PlantActionDialog>,
+    private router: Router,
+    private plantService: PlantsService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+  onCloseClick(): void {
+    this.dialogRef.close();
+  }
+  onYesClick(data:Plant): void {
+    data.light = data.type.light;
+    data.water = data.type.moist;
+    let tempDiff = (data.type.maxTemp - Math.abs(data.type.minTemp))/2
+    data.temp = data.type.minTemp + tempDiff;
+    console.log(data.temp)
+    data.actions = []
+    this.plantService.update(data.Id,data);
+    this.dialogRef.close();
+    this.router.navigate(["home"]);
   }
 }
