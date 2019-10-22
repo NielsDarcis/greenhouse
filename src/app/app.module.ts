@@ -34,7 +34,8 @@ import { ToCelciusPipe } from "./shared/to-celcius.pipe";
 import { LocationCanvasComponent } from "./locations/location-canvas/location-canvas.component";
 import { UserLoginComponent } from "./users/user-login/user-login.component";
 import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
-import { RoomComponent } from './rooms/room.component';
+import { RoomComponent } from './rooms/new-room/room.component';
+import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { RoomComponent } from './rooms/room.component';
     PlantTypeNewDialog,
     UserLoginComponent,
     TimeMakerComponent,
-    RoomComponent
+    RoomComponent,
+    RoomsListComponent
   ],
   entryComponents: [PlantTypeNewDialog],
   imports: [

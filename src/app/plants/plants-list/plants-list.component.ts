@@ -20,7 +20,6 @@ export class PlantsListComponent implements OnInit {
   async getPlants() {
     this.plantList = await this.plantService.getAll();
     this.plantList = this.checkAllPlantsThresholds(this.plantList);
-    console.log(this.plantList)
     this.dataSource = new MatTableDataSource(this.plantList);
   }
 
