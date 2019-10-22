@@ -1,7 +1,8 @@
-import { Space } from '../space/space';
+
+import { Room } from '../room';
 
 export class Location {
   id?: any;
   positions?: any[];
-  space?: Space;
+  space?: Room;
 }

@@ -1,16 +1,14 @@
-import { PlantType } from '../plant-type';
-import { Space } from '../space/space';
-
+import { PlantType } from "../plant-type";
+import { Room } from "../room";
 
 export class Plant {
-  
   Id?: any;
   name?: string;
   location?: boolean;
   type?: PlantType;
   water? = 7;
   light? = 7;
-  space?: Space;
+  space?: Room;
   temp?: number;
   imageUrl?: string;
   actions? = [];

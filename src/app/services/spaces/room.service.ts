@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { AngularFireDatabase, AngularFireObject } from "@angular/fire/database";
-import { Space } from "src/app/shared/models/space/space";
+import { Room } from "src/app/shared/models/room";
 
 import { take } from "rxjs/operators";
 
@@ -11,10 +11,10 @@ import { take } from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class SpacesService {
+export class RoomsService {
   item: Observable<any>;
   itemList: any;
-  database: string = "spaces";
+  database: string = "rooms";
   complete: any;
 
   constructor(private db: AngularFireDatabase) 
@@ -25,20 +25,20 @@ export class SpacesService {
 
     async getAll() {
       return await this.db
-        .list<Space>(this.database)
+        .list<Room>(this.database)
         .valueChanges()
         .pipe(take(1))
         .toPromise();
     }
 
-    create(object: Space){
-      object.Id = this.db.createPushId();
+    create(object: Room){
+      object.id = this.db.createPushId();
       let key = this.itemList.push(object).key;
-      object.Id = key;
+      object.id = key;
       this.itemList.update(key, object);
     }
-    update(key: string, newSpace: Space){
-      this.itemList.update(key, newSpace);
+    update(key: string, newRoom: Room){
+      this.itemList.update(key, newRoom);
     }
     delete(key: string) {
       this.itemList.remove(key);
