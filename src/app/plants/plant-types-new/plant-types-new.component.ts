@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialo
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import { PlantType } from "src/app/shared/models/plantType/plant-type";
 import { faTree } from "@fortawesome/free-solid-svg-icons";
+import { Plant } from 'src/app/shared/models/plant/plant';
 @Component({
   selector: "app-plant-types-new",
   templateUrl: "./plant-types-new.component.html",
@@ -45,7 +46,6 @@ export class PlantTypesNewComponent implements OnInit {
       width: '250px',
       data: {plantType: plantType}
     });
-    console.log(plantType)
   }
   
 }
@@ -65,8 +65,8 @@ export class PlantTypeNewDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  onYesClick(id:string): void {
-    this.plantTypesService.delete(id);
+  onYesClick(data:any): void {
+    this.plantTypesService.delete(data.plantType.id);
     this.dialogRef.close();
     this.router.navigate(["planttypes"]);
     
