@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { PlantsService } from "../../services/plants/plants.service";
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import { Plant } from "../../shared/models/plant/plant";
-import { PlantType } from "../../shared/models/plant-type";
+import { PlantType } from "../../shared/models/plantType/plant-type";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { MatSnackBar } from "@angular/material/snack-bar";

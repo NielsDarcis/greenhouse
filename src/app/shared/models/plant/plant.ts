@@ -1,4 +1,4 @@
-import { PlantType } from "../plant-type";
+import { PlantType } from "../plantType/plant-type";
 import { Room } from "../room";
 
 export class Plant {

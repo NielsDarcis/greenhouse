@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AngularFireDatabase } from "@angular/fire/database";
-import { PlantType } from "src/app/shared/models/plant-type";
+import { PlantType } from "src/app/shared/models/plantType/plant-type";
 import { take } from "rxjs/operators";
 import * as firebase from 'firebase';
 

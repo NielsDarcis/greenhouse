@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
-import { PlantType } from "src/app/shared/models/plant-type";
+import { PlantType } from "src/app/shared/models/plantType/plant-type";
 import { faTree } from "@fortawesome/free-solid-svg-icons";
 @Component({
   selector: "app-plant-types-new",
