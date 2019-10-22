@@ -1,22 +1,19 @@
-
-import { Room } from '../room';
-
+import { PlantType } from "../plantType/plant-type";
+import { Room } from "../room";
 
 export class Plant {
-  
   Id?: any;
   name?: string;
   location?: boolean;
+  type?: PlantType;
+  water? = 7;
+  light? = 7;
   space?: Room;
-  type?: string;
-  water?: number;
-  light?: number;
   temp?: number;
   imageUrl?: string;
- 
+  actions? = [];
   constructor() {
     this.name = "";
     this.location = true;
-    this.type = "";
   }
 }

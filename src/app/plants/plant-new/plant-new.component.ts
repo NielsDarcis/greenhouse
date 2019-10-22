@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlantsService } from "../../services/plants/plants.service";
 import { PlanttypesService } from "../../services/planttypes/planttypes.service"
 import { Plant } from "../../shared/models/plant/plant";
-import {PlantType } from "../../shared/models/plant-type";
+import {PlantType } from "../../shared/models/plantType/plant-type";
 import {Router} from '@angular/router';
 import { faSeedling } from '@fortawesome/free-solid-svg-icons';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -14,13 +14,14 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class PlantNewComponent implements OnInit {
   faSeedling=faSeedling;
-  selectedValue: string;
   plantTypeList: PlantType [];
   plant: Plant = new Plant();
 
 
   constructor(private plantService: PlantsService, private router: Router, private _snackBar: MatSnackBar,private plantTypeService: PlanttypesService,) { }
-
+  selectType(event: any){
+    this.plant.type = event.value;
+  }
 
   // voeg een nieuwe plant toe
   onSubmit() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
-import { PlantType } from "../../shared/models/plant-type";
+import { PlantType } from "../../shared/models/plantType/plant-type";
 import { Router } from "@angular/router";
 import * as Fuse from 'fuse.js';
 

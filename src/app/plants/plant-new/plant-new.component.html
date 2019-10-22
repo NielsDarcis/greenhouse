@@ -7,9 +7,9 @@
   <label>Name:</label>
   <input [(ngModel)]="plant.name" name="name" class="block" />
     <mat-label>Type:</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="plantTypeList">
-        <mat-option *ngFor="let plant of plantTypeList" [value]="plant.id">
-            {{plant.name}}
+    <mat-select (selectionChange)="selectType($event)" name="plantTypeList">
+        <mat-option *ngFor="let plantType of plantTypeList" [value]="plantType">
+            {{plantType.name}}
           </mat-option>
     </mat-select>
   <label>Location:</label>
