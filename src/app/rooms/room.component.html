@@ -1,8 +1,8 @@
 
-<form class="form-global">
+<form class="form-global" (ngSubmit)="onSubmit()">
     <h2>Add a new room</h2>
     <label>Name:</label>
-    <input class="block"/>
+    <input [(ngModel)]="room.name" name="name" class="block"/>
     <div class="padding">
       <ng-template [ngIf]="room.imageUrl" [ngIfElse]="defaultIcon">
         <div fxFlex="40">
@@ -18,12 +18,12 @@
           <div fxFlex="40">
             <fa-icon [icon]="faImage" class="default-icon"></fa-icon>
             <h3>Upload your floorplan</h3>
-            <input type="file" (change)="onFileSelected($event)"  />
+            <input type="file" (change)="onFileSelected($event)" />
             <button (click)="onUpload()" class="button-style" > upload</button>
           </div>
         </ng-template>
       </div>
-      <button class="button-style">create</button>
+      <button class="button-style" type="submit">create</button>
     </form>
         
 

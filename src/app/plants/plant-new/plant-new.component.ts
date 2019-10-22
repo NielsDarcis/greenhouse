@@ -26,7 +26,7 @@ export class PlantNewComponent implements OnInit {
   onSubmit() {
     this.plantService.create(this.plant);
     this.router.navigate(['home']);
-    this.openSnackBar('Plant Create', 'Succeed' )
+    this.openSnackBar('Plant Creation', 'Succeed' )
     
   }
 
