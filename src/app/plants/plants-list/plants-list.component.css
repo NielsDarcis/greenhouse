@@ -1,81 +1,77 @@
-//tables
-
-td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
   padding-left: 24px;
-  width: 33%
+  width: 33%;
 }
-td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
- width: 33%
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type,
+th.mat-header-cell:last-of-type {
+  width: 33%;
 }
-td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
   padding: 0;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   width: 33%;
 }
-
 th.mat-sort-header-sorted {
   color: black;
 }
-
-.mat-icon-button .mat-icon, .mat-icon-button i {
+.mat-icon-button .mat-icon,
+.mat-icon-button i {
   line-height: 24px;
   background: white;
 }
-
 .icon-color {
   background-color: white !important;
 }
-
 table.mat-table {
   border-spacing: 0;
   width: 100%;
 }
-
 .table-heading {
   font: size 30px !important;
   color: black;
   border-bottom: black solid 5px;
 }
-
 .mat-header-cell {
   font-size: 20px;
   font-weight: 500;
 }
-
 .add-icon {
   float: right;
   margin: 10px 10px 0 0;
   color: darkseagreen;
-  cursor:pointer;
+  cursor: pointer;
 }
-
-.add-icon-large{
+.add-icon-large {
   font-size: 150px;
   width: 100%;
   text-align: center;
   color: darkseagreen;
   margin-top: 200px;
-  cursor:pointer;
+  cursor: pointer;
 }
-
 .wrapper {
   cursor: pointer;
-  p {
-    position: relative;
-    bottom: 30px;
-    left: 0px;
-    visibility: hidden;
-  }
-  p:hover{
-      visibility: visible;
-      color: black;
-  }
 }
-.actions{
+.wrapper p {
+  position: relative;
+  bottom: 30px;
+  left: 0px;
+  visibility: hidden;
+}
+.wrapper p:hover {
+  visibility: visible;
+  color: black;
+}
+.actions {
   display: inline-block;
 }
-.btn{
+.btn {
   float: right;
   margin: 15px 15px;
 }
