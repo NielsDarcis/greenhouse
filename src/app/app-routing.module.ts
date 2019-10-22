@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: "planttypes/new", component: PlantTypesNewComponent, canActivate: [LoggedInGuard]  },
   { path: "planttypes/:id", component: PlantTypesNewComponent, canActivate: [LoggedInGuard]  },
   { path: "plant-details/:id", component: PlantDetailComponent, canActivate: [LoggedInGuard]  },
-  { path: "location-canvas", component: LocationCanvasComponent, canActivate: [LoggedInGuard] },
+  { path: "canvas/:id", component: LocationCanvasComponent, canActivate: [LoggedInGuard] },
   { path: "login", component: UserLoginComponent },
   { path: "rooms", component: RoomComponent },
   { path: "roomsList", component: RoomsListComponent}

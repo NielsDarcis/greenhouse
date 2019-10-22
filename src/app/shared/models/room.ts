@@ -1,9 +1,8 @@
 export class Room {
-    id?: any;
+  id?: any;
   name?: string;
   imageUrl?: string;
+  location?: Location;
 
-  constructor() {
-   
-  }
+  constructor() {}
 }

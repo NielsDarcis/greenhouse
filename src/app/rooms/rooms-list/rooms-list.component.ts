@@ -16,13 +16,18 @@ export class RoomsListComponent implements OnInit {
   columnsToDisplay = ["name"];
   roomsList: Room [];
 
-  constructor( private roomService: RoomsService) {
+  constructor( private roomService: RoomsService, private router: Router) {
 
   }
 
   async getRooms(){
     this.roomsList = await this.roomService.getAll();
     this.dataSource = new MatTableDataSource(this.roomsList);
+  }
+
+  onRowClicked(rooms: Room) {
+    console.log(rooms)
+    this.router.navigate(["canvas", rooms.id]);
   }
 
   ngOnInit() {

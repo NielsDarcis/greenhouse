@@ -6,21 +6,31 @@ canvas {
 }
 
 label {
-  display: block;
+  font-size: 25px;
+  padding-left: 23px;
+}
+
+h2{
+  font-size:34px;
+  padding: 5px 0 0 23px;
 }
 
 .list {
-  background: #c6ccbc;
   margin-top: -5px;
+  border-left: #0e4614c7 solid 1px;
 }
 .listItem {
-  background: grey;
-  opacity: 0.9;
-  width: 20%;
+  background:#0e4614c7;
+  color:white;
+  
   margin: 5px;
+  padding: 5px;
   columns: 3;
   list-style-type: none;
   line-height: 25px;
+  &:hover{
+    opacity: 0.9;
+  }
 }
 .marker {
   font-size: 25px;
@@ -38,7 +48,6 @@ tr {
 }
 
 td {
-  border: black solid 2px;
   height: 35px;
   width: 10%;
 }
@@ -53,3 +62,34 @@ td {
 .background{
     background: url("../../../assets/images/livingroom.jpg")
 }
+
+.block {
+  display: block;
+  width: 49%;
+  margin: 16px;
+  border: white solid 1px;
+  line-height: 27px;
+  padding-left: 12px;
+  color: white;
+  background: #0e4614c7;
+  opacity: 0.7;
+  border-radius: 20px;
+  font-size: 17px;
+}
+
+.icon-clear {
+  padding-left: 31%;
+  cursor: pointer;
+}
+
+.padding{
+  padding: 20px 0 20px 0;
+  margin: 5px;
+  border: #0e4614c7 solid 1px;
+}
+
+.locate{
+  
+}
+
+ 
