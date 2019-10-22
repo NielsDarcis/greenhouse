@@ -15,6 +15,7 @@ export class PlantsListComponent implements OnInit {
   dataSource: any;
   plant: Plant = new Plant(); 
   columnsToDisplay = ["name", "type", "location","actions"];
+  threshold =0.1
   constructor(private plantService: PlantsService, private router: Router) {}
 
   async getPlants() {
@@ -38,17 +39,17 @@ export class PlantsListComponent implements OnInit {
   }
   checkPlantThresholds(plant: Plant){
     plant.actions=[];
-    if( plant.temp>plant.type.maxTemp ){
-      plant.actions.push("plant too hot")
+    if( plant.temp>plant.type.maxTemp*(1-this.threshold) ){
+      plant.actions.push("hot")
     }
-    if( plant.temp<plant.type.minTemp ){
-      plant.actions.push("plant too cold")
+    if( plant.temp<plant.type.minTemp*this.threshold ){
+      plant.actions.push("cold")
     }
-    if( plant.water<plant.type.moist ){
-      plant.actions.push("plant too dry")
+    if( plant.water<plant.type.moist*this.threshold ){
+      plant.actions.push("dry")
     }
-    if( plant.light<plant.type.light){
-      plant.actions.push("plant too dark")
+    if( plant.light<plant.type.light*this.threshold){
+      plant.actions.push("dark")
     }
     return plant
   }

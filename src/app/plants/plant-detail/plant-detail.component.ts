@@ -129,14 +129,6 @@ export class PlantDetailComponent implements OnInit {
     this.plantId = this.activeRoute.snapshot.paramMap.get("id");
     await this.getPlantById(this.plantId);
 
-    this.waterGauge.value = this.plant.water;
-    this.waterGauge.max = this.plant.type.moist;
-    this.lightGauge.value = this.plant.light;
-    this.lightGauge.max = this.plant.type.light;
-    this.tempGauge.min = this.plant.type.minTemp;
-    this.tempGauge.max = this.plant.type.maxTemp;
-    this.tempGauge.value = this.plant.temp;
-
     let tempDiff = this.plant.type.maxTemp - this.plant.type.minTemp;
     this.tempThreshold = {
       [this.plant.type.minTemp]: { color: "red" },
@@ -150,7 +142,7 @@ export class PlantDetailComponent implements OnInit {
 
   getFakeTemp() {
 
-
+    let result: number
     const ob = new Observable(sub => {
       let timeout = null;
 
@@ -158,7 +150,7 @@ export class PlantDetailComponent implements OnInit {
       // after a random delay
       (function push() {
         timeout = setTimeout(() => {
-          sub.next(Math.round(Math.random() * 45));
+          sub.next(Math.round(Math.random() * 40));
           push();
         }, 10000); //set delay
       })();
@@ -168,7 +160,7 @@ export class PlantDetailComponent implements OnInit {
     });
 
     ob.subscribe((res:number) => {
-      this.tempGauge.value=res;
+      this.plant.temp=res;
     });
   }
 }

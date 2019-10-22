@@ -36,7 +36,13 @@
     <ng-container matColumnDef="actions">
       <th class="table-heading" mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let plant">
-        <div *ngFor="let action of plant.actions">{{ action }}</div> </td>
+        <div *ngFor="let action of plant.actions" class="actions">
+            <drop-maker *ngIf="action === 'dry'"[moistValue] = 10 ></drop-maker>
+            <sun-maker *ngIf="action === 'dark'"[sunValue] = 10 ></sun-maker>
+            <fire-maker *ngIf="action === 'hot'"[fireValue] = 5 ></fire-maker>
+            <frost-maker *ngIf="action === 'cold'"[frostValue] = 10 ></frost-maker>
+        </div> 
+      </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr
@@ -46,7 +52,7 @@
     ></tr>
   </table>
 
-  <mat-icon routerLink="/plant/new" class="add-icon"> library_add</mat-icon>
+  <button mat-fab routerLink="/plant/new" class="btn"> <mat-icon>add</mat-icon></button>
   <div class="wrapper">
     <p class="text">add a plant</p>
   </div>
