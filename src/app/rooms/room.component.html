@@ -10,7 +10,7 @@
               <img [src]="room.imageUrl" width="200px" height="200px" />
             </div>
             <h3>Upload your </h3>
-            <input type="file" (change)="onFileSelected($event)"  />
+            <input type="file" (change)="onFileSelected($event)" />
             <button (click)="onUpload()">upload</button>
           </div>
         </ng-template>
@@ -19,7 +19,7 @@
             <fa-icon [icon]="faImage" class="default-icon"></fa-icon>
             <h3>Upload your floorplan</h3>
             <input type="file" (change)="onFileSelected($event)"  />
-            <button (click)="onUpload()">upload</button>
+            <button (click)="onUpload()" class="button-style" > upload</button>
           </div>
         </ng-template>
       </div>

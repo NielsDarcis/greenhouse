@@ -1,4 +1,5 @@
-import { Space } from '../space/space';
+
+import { Room } from '../room';
 
 
 export class Plant {
@@ -6,7 +7,7 @@ export class Plant {
   Id?: any;
   name?: string;
   location?: boolean;
-  space?: Space;
+  space?: Room;
   type?: string;
   water?: number;
   light?: number;
