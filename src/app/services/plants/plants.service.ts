@@ -25,6 +25,12 @@ export class PlantsService {
       .pipe(take(1))
       .toPromise();
   }
+  
+  async getPlantById(id: string) {
+    let plantList = await this.getAll();
+    let plant = plantList.find(plant => plant.Id === id);
+    return plant
+  }
   create(object: Plant){
     object.Id = this.db.createPushId();
     let key = this.itemList.push(object).key;

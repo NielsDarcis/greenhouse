@@ -90,11 +90,6 @@ export class PlantDetailComponent implements OnInit {
     // refresh page to load in images
   }
 
-  async getPlantById(id: string) {
-    let plantList = await this.plantService.getAll();
-    this.plant = plantList.find(plant => plant.Id === id);
-  }
-
   selectType(event: any) {
     this.plant.type = event.value;
   }
@@ -146,7 +141,7 @@ export class PlantDetailComponent implements OnInit {
   async ngOnInit() {
     this.getPlantTypes();
     this.plantId = this.activeRoute.snapshot.paramMap.get("id");
-    await this.getPlantById(this.plantId);
+    this.plant = await this.plantService.getPlantById(this.plantId);
 
     let tempDiff = this.plant.type.maxTemp - Math.abs(this.plant.type.minTemp);
     this.tempThreshold = {
