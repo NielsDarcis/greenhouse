@@ -8,7 +8,6 @@
     <label>Name:</label>
     <input [(ngModel)]="plant.name" name="name" class="block" />
     <mat-label>Type:</mat-label>
-
     <mat-select
       *ngIf="plant.type"
       [placeholder]="plant.type.name"
@@ -27,13 +26,14 @@
     <mat-select
       *ngIf="plant.space"
       [placeholder]="plant.space.name"
-      (selectionChange)="selectroom($event)"
-      name="space"
+      (selectionChange)="selectRoom($event)"
+      name="roomsList"
     >
-      <mat-option *ngFor="let room of roomsList" [value]="room">
+      <mat-option *ngFor="let room of roomsList" [value]="room.name">
         {{ room.name }}
       </mat-option>
     </mat-select>
+
     <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
       <button type="submit" class="button-style">Save</button>
       <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { PlantsService } from "../../services/plants/plants.service";
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
+import { RoomsService } from "../../services/rooms/room.service";
 import { Plant } from "../../shared/models/plant/plant";
 import { PlantType } from "../../shared/models/plantType/plant-type";
 import { faLeaf } from "@fortawesome/free-solid-svg-icons";
@@ -26,7 +27,7 @@ export class PlantDetailComponent implements OnInit {
   plantTypeList: PlantType[];
   plantType: PlantType;
   plant: Plant = new Plant();
-  test: any;
+  roomsList: any[];
   tempThreshold: Object;
   gaugeType = "semi";
   threshold =0.1;
@@ -54,6 +55,7 @@ export class PlantDetailComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private plantService: PlantsService,
     private plantTypeService: PlanttypesService,
+    private roomsService: RoomsService,
     private router: Router,
     private _snackBar: MatSnackBar,
     private storage: AngularFireStorage,
@@ -118,10 +120,13 @@ export class PlantDetailComponent implements OnInit {
     });
   }
 
-  // haal lijst van type planten op
   async getPlantTypes() {
     let plantTypeList = await this.plantTypeService.getAll();
     return plantTypeList;
+  }
+  async getRooms() {
+    let roomsList = await this.roomsService.getAll();
+    return roomsList;
   }
   checkPlantThresholdsforAction(plant: Plant){
     plant.actions=[];
@@ -142,7 +147,8 @@ export class PlantDetailComponent implements OnInit {
     }
   }
   async ngOnInit() {
-    this.getPlantTypes();
+    this.plantTypeList = await this.getPlantTypes();
+    this.roomsList = await this.getRooms();
     this.plantId = this.activeRoute.snapshot.paramMap.get("id");
     this.plant = await this.plantService.getPlantById(this.plantId);
     this.waterGauge.max = this.plant.type.moist;
