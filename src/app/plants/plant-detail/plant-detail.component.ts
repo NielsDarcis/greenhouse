@@ -93,7 +93,10 @@ export class PlantDetailComponent implements OnInit {
   selectType(event: any) {
     this.plant.type = event.value;
   }
-
+  selectRoom(event: any) {
+    console.log(event)
+    this.plant.space.name = event.value;
+  }
   // update a plant
   onSubmit() {
     this.plantService.update(this.plantId, this.plant);
@@ -142,7 +145,10 @@ export class PlantDetailComponent implements OnInit {
     this.getPlantTypes();
     this.plantId = this.activeRoute.snapshot.paramMap.get("id");
     this.plant = await this.plantService.getPlantById(this.plantId);
-
+    this.waterGauge.max = this.plant.type.moist;
+    this.lightGauge.max = this.plant.type.light;
+    this.tempGauge.max = this.plant.type.maxTemp;
+    this.tempGauge.min = this.plant.type.minTemp;
     let tempDiff = this.plant.type.maxTemp - Math.abs(this.plant.type.minTemp);
     this.tempThreshold = {
       [this.plant.type.minTemp]: { color: "red" },
