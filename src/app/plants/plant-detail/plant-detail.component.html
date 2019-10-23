@@ -1,4 +1,9 @@
-<div fxLayout="row" fxLayoutAlign="start end" class="padding">
+<div
+  fxLayout.gt-sm="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="start end"
+  class="padding"
+>
   <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="60">
     <div div fxLayout="row" fxLayoutAlign="start center">
       <h2>Plant Detail</h2>
@@ -40,7 +45,7 @@
     </div>
   </form>
 
-  <ng-template [ngIf]="plant.imageUrl" [ngIfElse]="defaultIcon">
+  <ng-template [ngIf]="plant.imageUrl" [ngIfElse]="defaultIcon" fxFlex="40">
     <div fxFlex="40">
       <div style="width:50%; height:50%">
         <img [src]="plant.imageUrl" width="200px" height="200px" />
