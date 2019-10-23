@@ -32,6 +32,13 @@ export class RoomsService {
         .toPromise();
     }
 
+    //firebase RealtimeDatabase does not support yet querying on properties of an object
+    //waiting for that change or our change to firestore we ll do front end filtering
+    async getByName(name: string) {
+      let roomsList: Room[] = await this.getAll();
+      let room:Room = roomsList.find(room => room.name === name);
+      return room;
+    }
     create(object: Room){
       object.id = this.db.createPushId();
       let key = this.itemList.push(object).key;

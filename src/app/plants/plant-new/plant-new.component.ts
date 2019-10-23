@@ -1,50 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { PlantsService } from "../../services/plants/plants.service";
-import { PlanttypesService } from "../../services/planttypes/planttypes.service"
+import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import { Plant } from "../../shared/models/plant/plant";
-import {PlantType } from "../../shared/models/plantType/plant-type";
-import {Router} from '@angular/router';
-import { faSeedling } from '@fortawesome/free-solid-svg-icons';
-import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { PlantType } from "../../shared/models/plantType/plant-type";
+import { Router } from "@angular/router";
+import { faSeedling } from "@fortawesome/free-solid-svg-icons";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { RoomsService } from "../../services/rooms/room.service";
+import { Room } from "../../shared/models/room";
 @Component({
-  selector: 'app-plant-new',
-  templateUrl: './plant-new.component.html',
-  styleUrls: ['./plant-new.component.scss']
+  selector: "app-plant-new",
+  templateUrl: "./plant-new.component.html",
+  styleUrls: ["./plant-new.component.scss"]
 })
 export class PlantNewComponent implements OnInit {
-  faSeedling=faSeedling;
-  plantTypeList: PlantType [];
+  faSeedling = faSeedling;
+  plantTypeList: PlantType[];
   plant: Plant = new Plant();
+  roomsList: Room[];
+  constructor(
+    private plantsService: PlantsService,
+    private router: Router,
+    private _snackBar: MatSnackBar,
+    private plantTypeService: PlanttypesService,
+    private roomsService: RoomsService
+  ) {}
 
-
-  constructor(private plantService: PlantsService, private router: Router, private _snackBar: MatSnackBar,private plantTypeService: PlanttypesService,) { }
-  selectType(event: any){
+  selectType(event: any) {
     this.plant.type = event.value;
   }
-
-  // voeg een nieuwe plant toe
-  onSubmit() {
-    this.plantService.create(this.plant);
-    this.router.navigate(['home']);
-    this.openSnackBar('Plant Creation', 'Succeed' )
-    
+  selectRoom(event: any) {
+    this.plant.space = event.value;
   }
-
-  // haal lijst met type planten op 
-
+  onSubmit() {
+    this.plantsService.create(this.plant);
+    this.router.navigate(["home"]);
+    this.openSnackBar("Plant Creation", "Succeed");
+  }
   async getPlantTypes() {
     this.plantTypeList = await this.plantTypeService.getAll();
   }
-
+  async getRooms() {
+    this.roomsList = await this.roomsService.getAll();
+  }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 2000
     });
   }
-
-  ngOnInit() {
-    this.getPlantTypes();
+  async ngOnInit() {
+    await this.getPlantTypes();
+    await this.getRooms();
   }
-
 }

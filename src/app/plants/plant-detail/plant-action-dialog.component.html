@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Give {{ data.plant.name }} some attention!</h2>
+<div mat-dialog-actions>
+  <div *ngFor="let item of data.plant.actions" fxFlex="100">
+    <div *ngIf="item === 'dry'" fxFlex="100">
+      <p>Give {{ data.plant.name }} some water</p>
+    </div>
+    <div *ngIf="item === 'hot'" fxFlex="100">
+        <p>Turn off the heat for {{ data.plant.name }}</p>
+    </div>
+    <div *ngIf="item === 'cold'" fxFlex="100">
+        <p>Turn on the heat for {{ data.plant.name }}</p>
+    </div>
+    <div *ngIf="item === 'dark'" fxFlex="100">
+        <p>Turn on the ligths for {{ data.plant.name }}
+        or just put me near the window </p>
+    </div>
+  </div>
+  <button mat-button (click)="onCloseClick()" cdkFocusInitial>Later</button>
+  <button mat-button (click)="onYesClick(data.plant)" cdkFocusInitial>Ok</button>
+</div>

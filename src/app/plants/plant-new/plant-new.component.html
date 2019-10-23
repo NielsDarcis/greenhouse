@@ -13,7 +13,11 @@
           </mat-option>
     </mat-select>
   <label>Location:</label>
-  <input [(ngModel)]="plant.location" name="location" class="block" />
+  <mat-select (selectionChange)="selectRoom($event)" name="room">
+      <mat-option *ngFor="let room of roomsList" [value]="room">
+          {{room.name}}
+        </mat-option>
+  </mat-select>
   <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
     <button type="submit" class="button-style">CREATE</button>
   </div>

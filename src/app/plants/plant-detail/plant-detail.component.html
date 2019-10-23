@@ -1,4 +1,9 @@
-<div fxLayout="row" fxLayoutAlign="start end" class="padding">
+<div
+  fxLayout.gt-sm="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="start end"
+  class="padding"
+>
   <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="60">
     <div div fxLayout="row" fxLayoutAlign="start center">
       <h2>Plant Detail</h2>
@@ -8,8 +13,12 @@
     <label>Name:</label>
     <input [(ngModel)]="plant.name" name="name" class="block" />
     <mat-label>Type:</mat-label>
-
-    <mat-select *ngIf="plant.type" [placeholder]="plant.type.name" (selectionChange)="selectType($event)" name="plantTypeList">
+    <mat-select
+      *ngIf="plant.type"
+      [placeholder]="plant.type.name"
+      (selectionChange)="selectType($event)"
+      name="plantTypeList"
+    >
       <mat-option
         *ngFor="let plantType of plantTypeList"
         [value]="plantType.name"
@@ -19,14 +28,24 @@
     </mat-select>
 
     <label>Location:</label>
-    <input [(ngModel)]="plant.location" name="location" class="block" />
+    <mat-select
+      *ngIf="plant.space"
+      [placeholder]="plant.space.name"
+      (selectionChange)="selectRoom($event)"
+      name="roomsList"
+    >
+      <mat-option *ngFor="let room of roomsList" [value]="room.name">
+        {{ room.name }}
+      </mat-option>
+    </mat-select>
+
     <div fxLayout="row" fxLayoutAlign="start center" style="margin-top:30px">
       <button type="submit" class="button-style">Save</button>
       <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>
     </div>
   </form>
 
-  <ng-template [ngIf]="plant.imageUrl" [ngIfElse]="defaultIcon">
+  <ng-template [ngIf]="plant.imageUrl" [ngIfElse]="defaultIcon" fxFlex="40">
     <div fxFlex="40">
       <div style="width:50%; height:50%">
         <img [src]="plant.imageUrl" width="200px" height="200px" />
@@ -46,7 +65,7 @@
   </ng-template>
 </div>
 
-<div 
+<div
   fxLayout.gt-md="row"
   fxLayout.sm="column"
   fxLayout.xs="column"
@@ -57,7 +76,7 @@
     class="gauges"
     [type]="gaugeType"
     cap="round"
-    [max]="plant.type.moist"
+    [max]="waterGauge.max"
     thick="10"
     [value]="plant.water"
     [label]="waterGauge.label"
@@ -68,7 +87,7 @@
     class="gauges"
     [type]="gaugeType"
     cap="round"
-    [max]="plant.type.light"
+    [max]="lightGauge.max"
     thick="10"
     [value]="plant.light"
     [label]="lightGauge.label"
@@ -79,8 +98,8 @@
     class="gauges"
     [type]="gaugeType"
     cap="round"
-    [max]="plant.type.maxTemp"
-    [min]="plant.type.minTemp"
+    [max]="tempGauge.max"
+    [min]="tempGauge.min"
     thick="10"
     [value]="plant.temp"
     [label]="tempGauge.label"
