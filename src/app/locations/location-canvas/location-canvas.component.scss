@@ -18,14 +18,15 @@ h2{
 .list {
   margin-top: -5px;
   border-left: #0e4614c7 solid 1px;
+  
 }
 .listItem {
-  background:#0e4614c7;
+  background: none;
   color:white;
-  
+  text-align: center;
   margin: 5px;
   padding: 5px;
-  columns: 3;
+  
   list-style-type: none;
   line-height: 25px;
   &:hover{
@@ -88,8 +89,8 @@ td {
   border: #0e4614c7 solid 1px;
 }
 
-.locate{
-  
+.bg-green{
+background: #0e4614c7
 }
 
  

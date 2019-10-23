@@ -8,22 +8,19 @@
     </div>
     <label>Name:</label>
     <input [(ngModel)]="room.name" name="name" class="block" />
-    <button  mat-fab class="add-btn">
+    <button type="submit" mat-fab class="add-btn">
         <mat-icon>edit</mat-icon>
       </button>
   </form>
   <div class="list" fxFlex="10">
-    <ul>
+    <ul> 
       <li
-      *ngFor="let plant of plantList; let index = index"
-      class="listItem"
+      *ngFor="let plant of availablePlants; let index = index" 
+      class="listItem bg-green"
       draggable="true"
-      (dragstart)="drag($event, index)"
-      >
-      <div *ngIf="plant.location">
-        {{ plant.name }}
-      </div>
-    </li>
+      (dragstart)="drag($event, index)">
+            {{ plant.name }}
+      </li>
   </ul>
 </div>
 <mat-icon class="icon-clear" routerLink="/home">clear</mat-icon>

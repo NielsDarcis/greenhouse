@@ -29,6 +29,7 @@ export class LocationsService {
     let key = this.locationList.push(object).key;
     object.id = key;
     this.locationList.update(key, object);
+    return key;
   }
   async getById(id: string) {
     return await this.db
