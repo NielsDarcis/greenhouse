@@ -36,7 +36,7 @@ export class LocationCanvasComponent implements OnInit {
     private roomService: RoomsService,
     private activeRoute: ActivatedRoute
   ) {
-    this.location.positions = this.generateEmptyLocations(15, 20);
+    this.location.positions = this.generateEmptyLocations(20, 10);
   }
 
   get availablePlants() {
@@ -86,9 +86,7 @@ export class LocationCanvasComponent implements OnInit {
     this.plantService.update(plant.Id, plant);
     this.room.location.positions[row][col] = "null";
     this.roomService.update(this.room.id, this.room);
-    this.locationService.update(this.location.id, {
-      positions: this.location.positions
-    });
+    
   }
 
   async save() {

@@ -1,18 +1,19 @@
-<div fxLayout="row" fxLayoutAlign="end center" class="locate">
-  <h2>Locate your plans in the room</h2>
+<div fxLayout="row" fxLayoutAlign="center center" class="locate">
+    <h2>Locate your plants in the room</h2>
 </div>
 <div fxLayout="row" fxLayoutAlign="start center" class="padding">
-  <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="60">
+  <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="50">
     <div div fxLayout="row" fxLayoutAlign="start center">
       <h2>Room Detail</h2>
     </div>
     <label>Name:</label>
     <input [(ngModel)]="room.name" name="name" class="block" />
-    <button type="submit" mat-fab class="add-btn">
+    <button type="submit" mat-mini-fab class="add-btn">
         <mat-icon>edit</mat-icon>
       </button>
   </form>
-  <div class="list" fxFlex="10">
+  <div class="list" fxFlex="50">
+    
     <ul> 
       <li
       *ngFor="let plant of availablePlants; let index = index" 
@@ -23,12 +24,10 @@
       </li>
   </ul>
 </div>
-<mat-icon class="icon-clear" routerLink="/home">clear</mat-icon>
 </div>
+<mat-icon class="icon-clear" routerLink="/home">clear</mat-icon>
 
-
-
-<table class="background" >
+<table >
   <tr *ngFor="let row of location.positions; let rowIndex = index">
     <td
     *ngFor="let item of row; let colIndex = index"
@@ -45,4 +44,5 @@
     </td>
   </tr>
 </table>
-
+    <img [src]="room.imageUrl">
+  
