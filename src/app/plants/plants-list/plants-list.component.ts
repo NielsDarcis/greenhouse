@@ -18,15 +18,11 @@ export class PlantsListComponent implements OnInit {
   threshold = 0.1;
   constructor(private plantService: PlantsService, private router: Router) {}
 
-  async getPlants() {
+  async ngOnInit() {
+    // this.plantService.deleteAll();
     this.plantList = await this.plantService.getAll();
     this.plantList = this.checkAllPlantsThresholds(this.plantList);
     this.dataSource = new MatTableDataSource(this.plantList);
-  }
-
-  ngOnInit() {
-    // this.plantService.deleteAll();
-    this.getPlants();
   }
 
   onRowClicked(plants: Plant) {

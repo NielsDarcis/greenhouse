@@ -11,7 +11,11 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { Observable } from "rxjs";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from "@angular/material/dialog";
 @Component({
   selector: "app-plant-detail",
   templateUrl: "./plant-detail.component.html",
@@ -30,7 +34,7 @@ export class PlantDetailComponent implements OnInit {
   roomsList: any[];
   tempThreshold: Object;
   gaugeType = "semi";
-  threshold =0.1;
+  threshold = 0.1;
   waterGauge = {
     value: 0,
     label: "Water",
@@ -59,7 +63,7 @@ export class PlantDetailComponent implements OnInit {
     private router: Router,
     private _snackBar: MatSnackBar,
     private storage: AngularFireStorage,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {}
 
   onFileSelected(event) {
@@ -92,11 +96,11 @@ export class PlantDetailComponent implements OnInit {
     // refresh page to load in images
   }
 
-  selectType(event: any) {
-    this.plant.type = event.value;
+  async selectType(event: any) {
+    let typeName = event.value;
+    this.plant.type = await this.plantTypeService.getByName(typeName);
   }
   selectRoom(event: any) {
-    console.log(event)
     this.plant.space.name = event.value;
   }
   // update a plant
@@ -128,22 +132,22 @@ export class PlantDetailComponent implements OnInit {
     let roomsList = await this.roomsService.getAll();
     return roomsList;
   }
-  checkPlantThresholdsforAction(plant: Plant){
-    plant.actions=[];
-    if( plant.temp>plant.type.maxTemp*(1-this.threshold) ){
-      plant.actions.push("hot")
+  checkPlantThresholdsforAction(plant: Plant) {
+    plant.actions = [];
+    if (plant.temp > plant.type.maxTemp * (1 - this.threshold)) {
+      plant.actions.push("hot");
     }
-    if( plant.temp<plant.type.minTemp*this.threshold ){
-      plant.actions.push("cold")
+    if (plant.temp < plant.type.minTemp * this.threshold) {
+      plant.actions.push("cold");
     }
-    if( plant.water<plant.type.moist*this.threshold ){
-      plant.actions.push("dry")
+    if (plant.water < plant.type.moist * this.threshold) {
+      plant.actions.push("dry");
     }
-    if( plant.light<plant.type.light*this.threshold){
-      plant.actions.push("dark")
+    if (plant.light < plant.type.light * this.threshold) {
+      plant.actions.push("dark");
     }
-    if(plant.actions.length !== 0){
-      this.openDialog(plant)
+    if (plant.actions.length !== 0) {
+      this.openDialog(plant);
     }
   }
   async ngOnInit() {
@@ -163,9 +167,8 @@ export class PlantDetailComponent implements OnInit {
       [this.plant.type.minTemp + tempDiff * 0.8]: { color: "orange" },
       [this.plant.type.minTemp + tempDiff * 0.9]: { color: "red" }
     };
-    this.checkPlantThresholdsforAction(this.plant)
+    this.checkPlantThresholdsforAction(this.plant);
     this.getFakeTemp();
-
   }
 
   getFakeTemp() {
@@ -191,10 +194,10 @@ export class PlantDetailComponent implements OnInit {
     });
   }
 
-  openDialog(plant:any): void {
+  openDialog(plant: any): void {
     const dialogRef = this.dialog.open(PlantActionDialog, {
       width: "250px",
-      data: { plant:plant }
+      data: { plant: plant }
     });
   }
 }
@@ -213,14 +216,14 @@ export class PlantActionDialog {
   onCloseClick(): void {
     this.dialogRef.close();
   }
-  onYesClick(data:Plant): void {
+  onYesClick(data: Plant): void {
     data.light = data.type.light;
     data.water = data.type.moist;
-    let tempDiff = (data.type.maxTemp - Math.abs(data.type.minTemp))/2
+    let tempDiff = (data.type.maxTemp - Math.abs(data.type.minTemp)) / 2;
     data.temp = data.type.minTemp + tempDiff;
-    console.log(data.temp)
-    data.actions = []
-    this.plantService.update(data.Id,data);
+    console.log(data.temp);
+    data.actions = [];
+    this.plantService.update(data.Id, data);
     this.dialogRef.close();
     this.router.navigate(["home"]);
   }
