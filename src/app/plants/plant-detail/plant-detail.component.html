@@ -1,8 +1,9 @@
-<div
+<mat-card
   fxLayout.gt-sm="row wrap"
   fxLayout.xs="column"
   fxLayoutAlign="start end"
   class="padding"
+  
 >
   <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="60">
     <div div fxLayout="row" fxLayoutAlign="start center">
@@ -44,7 +45,6 @@
       <mat-icon (click)="deletePlant()" class="icon-garbage">delete</mat-icon>
     </div>
   </form>
-
   <ng-template [ngIf]="plant.imageUrl" [ngIfElse]="defaultIcon" fxFlex="40">
     <div fxFlex="40">
       <div style="width:50%; height:50%">
@@ -63,9 +63,10 @@
       <button (click)="onUpload()">upload</button>
     </div>
   </ng-template>
-</div>
+</mat-card>
+<!-- </div> -->
 
-<div
+<mat-card
   fxLayout.gt-md="row"
   fxLayout.sm="column"
   fxLayout.xs="column"
@@ -107,4 +108,4 @@
     [thresholds]="tempThreshold"
   >
   </ngx-gauge>
-</div>
+</mat-card>
