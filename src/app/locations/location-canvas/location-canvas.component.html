@@ -25,8 +25,9 @@
   </ul>
 </div>
 </div>
-<mat-icon class="icon-clear" routerLink="/home">clear</mat-icon>
+<!-- <mat-icon class="icon-clear" routerLink="/home">clear</mat-icon> -->
 
+<img [src]="room.imageUrl">
 <table >
   <tr *ngFor="let row of location.positions; let rowIndex = index">
     <td
@@ -44,5 +45,5 @@
     </td>
   </tr>
 </table>
-    <img [src]="room.imageUrl">
+   
   

@@ -8,7 +8,7 @@ export class Plant {
   type?: PlantType;
   water? = 7;
   light? = 7;
-  space?: Room;
+  room?: Room;
   temp?: number;
   imageUrl?: string;
   actions? = [];

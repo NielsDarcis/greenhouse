@@ -24,7 +24,7 @@ ul{
 .list {
   margin-top: -5px;
   border-left: #0e4614c7 solid 1px;
-  column-count: 2;
+  column-count: 1;
   
 }
 .listItem {
@@ -46,8 +46,11 @@ ul{
 }
 
 table {
-  margin: 5 auto 5 auto;
-  width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0px;
+    position: relative;
+    margin-top:-501px;
 }
 
 tr {
@@ -56,8 +59,8 @@ tr {
 }
 
 td {
-  height: 35px;
-  width: 1%;
+  height: 25px;
+  width: 70px;
   border: black solid 1px;
 }
 

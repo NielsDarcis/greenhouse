@@ -26,7 +26,6 @@ export class RoomsListComponent implements OnInit {
   }
 
   onRowClicked(rooms: Room) {
-    console.log(rooms)
     this.router.navigate(["canvas", rooms.id]);
   }
 
