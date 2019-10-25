@@ -29,8 +29,8 @@
 
     <label>Location:</label>
     <mat-select
-      *ngIf="plant.space"
-      [placeholder]="plant.space.name"
+      *ngIf="plant.room"
+      [placeholder]="plant.room.name"
       (selectionChange)="selectRoom($event)"
       name="roomsList"
     >

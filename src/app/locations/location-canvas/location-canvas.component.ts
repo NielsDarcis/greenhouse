@@ -15,6 +15,7 @@ import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { ActivatedRoute } from "@angular/router";
 import { Room } from "src/app/shared/models/room";
 import { RoomsService } from "src/app/services/rooms/room.service";
+import { IdTokenResult } from '@firebase/auth-types';
 
 @Component({
   selector: "app-location-canvas",
@@ -54,7 +55,16 @@ export class LocationCanvasComponent implements OnInit {
   }
 
   async getPlants() {
-    this.plantList = await this.plantService.getAll();
+    const plantList:Plant[] = await this.plantService.getAll();
+    let newPlantList: Plant[] = [];
+    for( let plant of plantList) {
+      if(plant.room){
+        if( plant.room.id  === this.room.id){
+          newPlantList.push(plant) 
+        }
+    }
+  }
+    return newPlantList;
   }
 
   async getRoomById(id: string) {
@@ -115,9 +125,11 @@ export class LocationCanvasComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.getPlants();
     this.roomId = this.activeRoute.snapshot.paramMap.get("id");
     this.room = await this.getRoomById(this.roomId);
-    this.location.positions = this.room.location.positions;
+    if(this.room.location){
+      this.location.positions = this.room.location.positions;
+    }
+      this.plantList = await this.getPlants();
   }
 }

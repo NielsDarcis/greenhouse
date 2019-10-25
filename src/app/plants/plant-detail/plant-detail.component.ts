@@ -101,7 +101,7 @@ export class PlantDetailComponent implements OnInit {
     this.plant.type = await this.plantTypeService.getByName(typeName);
   }
   selectRoom(event: any) {
-    this.plant.space.name = event.value;
+    this.plant.room.name = event.value;
   }
   // update a plant
   onSubmit() {
@@ -168,7 +168,7 @@ export class PlantDetailComponent implements OnInit {
       [this.plant.type.minTemp + tempDiff * 0.9]: { color: "red" }
     };
     this.checkPlantThresholdsforAction(this.plant);
-    this.getFakeTemp();
+    //this.getFakeTemp();
   }
 
   getFakeTemp() {

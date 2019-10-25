@@ -30,7 +30,7 @@ export class PlantNewComponent implements OnInit {
     this.plant.type = event.value;
   }
   selectRoom(event: any) {
-    this.plant.space = event.value;
+    this.plant.room = event.value;
   }
   onSubmit() {
     this.plantsService.create(this.plant);
