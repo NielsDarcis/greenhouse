@@ -1,30 +1,28 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="locate">
-    <h2>Locate your plants in the room</h2>
-</div>
-<div fxLayout="row" fxLayoutAlign="start center" class="padding">
-  <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="50">
-    <div div fxLayout="row" fxLayoutAlign="start center">
-      <h2>Room Detail</h2>
-    </div>
-    <label>Name:</label>
-    <input [(ngModel)]="room.name" name="name" class="block" />
-    <button type="submit" mat-mini-fab class="add-btn">
-        <mat-icon>edit</mat-icon>
-      </button>
-  </form>
-  <div class="list" fxFlex="50">
-    
-    <ul> 
-      <li
-      *ngFor="let plant of availablePlants; let index = index" 
-      class="listItem bg-green"
-      draggable="true"
-      (dragstart)="drag($event, index)">
-            {{ plant.name }}
-      </li>
-  </ul>
-</div>
-</div>
+<mat-card>
+
+  <div fxLayout="row" fxLayoutAlign="center center" class="locate">
+      <h2>Locate your plants in the room</h2>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" class="padding">
+    <form (ngSubmit)="onSubmit()" #plantForm="ngForm" fxFlex="50">
+      <div div fxLayout="row" fxLayoutAlign="start center">
+        <h2>Room Detail</h2>
+      </div>
+    </form>
+    <div class="list" fxFlex="50">
+      
+      <ul> 
+        <li
+        *ngFor="let plant of availablePlants; let index = index" 
+        class="listItem bg-green"
+        draggable="true"
+        (dragstart)="drag($event, index)">
+              {{ plant.name }}
+        </li>
+    </ul>
+  </div>
+  </div>
+</mat-card>
 <!-- <mat-icon class="icon-clear" routerLink="/home">clear</mat-icon> -->
 
 <img [src]="room.imageUrl">
