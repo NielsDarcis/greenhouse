@@ -42,7 +42,7 @@
     </div>
     <div fxFlex="10" class="paramValue">{{ plantType.moist }} RH</div>
     <div class="icons">
-      <drop-maker *ngIf="plantType.moist" [moistValue]="plantType.moist">
+      <drop-maker *ngIf="plantType.moist" [moistValue]="plantType.moist" (info)="showInfo($event)">
       </drop-maker>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import { PlantType } from "src/app/shared/models/plantType/plant-type";
 import { faTree } from "@fortawesome/free-solid-svg-icons";
@@ -19,24 +19,25 @@ export class PlantTypesNewComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     public dialog: MatDialog,
-  ) {}
+    private _snackBar: MatSnackBar,
+  ) { }
 
-  onSubmit():void {
+  onSubmit(): void {
     this.plantTypesService.create(this.plantType);
     this.router.navigate(["planttypes"]);
   }
-  delete(plantType: PlantType):void {
+  delete(plantType: PlantType): void {
     event.preventDefault();
     this.openDialog(plantType);
   }
-  edit(plantType: PlantType):void {
+  edit(plantType: PlantType): void {
     event.preventDefault();
     this.plantTypesService.update(plantType.id, plantType);
     this.router.navigate(["planttypes"]);
   }
   async ngOnInit() {
     let id = this.activeRoute.snapshot.paramMap.get("id");
-    if(id !== null){
+    if (id !== null) {
       let plantType = await this.plantTypesService.getById(id);
       this.plantType = plantType;
     }
@@ -44,10 +45,15 @@ export class PlantTypesNewComponent implements OnInit {
   openDialog(plantType: PlantType): void {
     const dialogRef = this.dialog.open(PlantTypeNewDialog, {
       width: '250px',
-      data: {plantType: plantType}
+      data: { plantType: plantType }
     });
   }
-  
+  showInfo(text: string, action: string) {
+    this._snackBar.open(text, action, {
+      duration: 2000,
+    });
+  }
+
 }
 
 @Component({
@@ -60,15 +66,14 @@ export class PlantTypeNewDialog {
     public dialogRef: MatDialogRef<PlantTypeNewDialog>,
     private plantTypesService: PlanttypesService,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: PlantType) {}
+    @Inject(MAT_DIALOG_DATA) public data: PlantType) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  onYesClick(data:any): void {
+  onYesClick(data: any): void {
     this.plantTypesService.delete(data.plantType.id);
     this.dialogRef.close();
     this.router.navigate(["planttypes"]);
-    
   }
 }
