@@ -81,11 +81,11 @@ export class LocationCanvasComponent implements OnInit {
   }
 
   drop(ev, col, row) {
-    this.location.positions[row][col] = this.plantList[this.currentPlant];
-    this.plantList[this.currentPlant].location = false;
+    this.location.positions[row][col] = this.availablePlants[this.currentPlant];
+    this.availablePlants[this.currentPlant].location = false;
     this.plantService.update(
-      this.plantList[this.currentPlant].Id,
-      this.plantList[this.currentPlant]
+      this.availablePlants[this.currentPlant].Id,
+      this.availablePlants[this.currentPlant]
     );
     this.save();
     
