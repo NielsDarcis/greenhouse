@@ -32,7 +32,7 @@ import { SunMakerComponent } from "./shared/sun-maker/sun-maker.component";
 import { FrostMakerComponent } from "./shared/frost-maker/frost-maker.component";
 import { FireMakerComponent } from "./shared/fire-maker/fire-maker.component";
 import { TimeMakerComponent } from "./shared/time-maker/time-maker.component";
-import { ToCelciusPipe } from "./shared/to-celcius.pipe";
+import { ToCelciusPipe } from "./shared/pipes/to-celcius.pipe";
 import { LocationCanvasComponent } from "./locations/location-canvas/location-canvas.component";
 import { UserLoginComponent } from "./users/user-login/user-login.component";
 import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";

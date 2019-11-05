@@ -1,7 +1,7 @@
-import { PlantType } from '../plantType/plant-type';
+// import { PlantType } from '../plantType/plant-type';
 
-describe('PlantType', () => {
-  it('should create an instance', () => {
-    expect(new PlantType()).toBeTruthy();
-  });
-});
+// describe('PlantType', () => {
+//   it('should create an instance', () => {
+//     expect(new PlantType()).toBeTruthy();
+//   });
+// });
