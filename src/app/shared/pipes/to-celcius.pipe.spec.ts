@@ -9,4 +9,8 @@ describe('ToCelciusPipe', () => {
   const pipe = new ToCelciusPipe();
   expect(pipe.transform(6)).toEqual('6 °C')
 })
+it('should create negative numbers', () => {
+  const pipe = new ToCelciusPipe();
+  expect(pipe.transform(-1)).toEqual('-1 °C')
+})
 });

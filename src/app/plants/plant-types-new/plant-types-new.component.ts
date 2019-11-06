@@ -5,7 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { PlanttypesService } from "../../services/planttypes/planttypes.service";
 import { PlantType } from "src/app/shared/models/plantType/plant-type";
 import { faTree } from "@fortawesome/free-solid-svg-icons";
-import { Plant } from 'src/app/shared/models/plant/plant';
+
 @Component({
   selector: "app-plant-types-new",
   templateUrl: "./plant-types-new.component.html",
