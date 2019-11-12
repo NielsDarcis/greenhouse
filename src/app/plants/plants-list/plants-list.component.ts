@@ -19,6 +19,7 @@ export class PlantsListComponent implements OnInit {
   constructor(private plantService: PlantsService, private router: Router) {}
 
   async ngOnInit() {
+    console.log('test')
     // this.plantService.deleteAll();
     this.plantList = await this.plantService.getAll();
     this.plantList = this.checkAllPlantsThresholds(this.plantList);
