@@ -56,8 +56,6 @@ describe("PlantsListComponent", () => {
     fixture = TestBed.createComponent(PlantsListComponent);
   });
 
-  //   beforeEach(() => {
-  //   });
 
   it("should create", () => {
     component = fixture.componentInstance;
@@ -70,7 +68,6 @@ describe("PlantsListComponent", () => {
     fixture.whenStable().then(() => {
       let x = mockHeroService.getAll.and.returnValue(PLANTS);
       fixture.detectChanges();
-      console.log(fixture.componentInstance.plantList, x);
       expect(fixture.componentInstance.plantList.length).toBe(2);
     });
   });
