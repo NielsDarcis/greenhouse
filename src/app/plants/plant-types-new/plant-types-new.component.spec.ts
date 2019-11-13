@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from "@angular/core/testing";
 
 import { PlantTypesNewComponent } from "./plant-types-new.component";
 import { Router, ActivatedRoute, RouterModule } from "@angular/router";
@@ -20,7 +20,7 @@ import { PlantType } from 'src/app/shared/models/plantType/plant-type';
 describe("PlantTypesNewComponent", () => {
   let component: PlantTypesNewComponent;
   let fixture: ComponentFixture<PlantTypesNewComponent>;
-  let mockPlantTypesService;
+  let mockPlantTypesService, mockActivatedRoute;
   let PLANTTYPES: PlantType[];
   beforeEach(() => {
     PLANTTYPES = [
@@ -49,6 +49,10 @@ describe("PlantTypesNewComponent", () => {
       "getById",
       "delete"
     ]);
+    mockActivatedRoute = {
+      snapshot: { paramMap: { get: () => { return '3';}}}
+    }
+    
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
@@ -63,14 +67,14 @@ describe("PlantTypesNewComponent", () => {
         BrowserAnimationsModule
       ],
       providers: [
-        { provide: PlanttypesService, useValue: mockPlantTypesService }
+        { provide: PlanttypesService, useValue: mockPlantTypesService },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute }
       ],
       declarations: [PlantTypesNewComponent, ToCelciusPipe],
       schemas: [NO_ERRORS_SCHEMA]
     });
     fixture = TestBed.createComponent(PlantTypesNewComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it("should create", () => {
@@ -92,11 +96,11 @@ describe("PlantTypesNewComponent", () => {
     expect(elementH2.nativeElement.textContent).toContain("Ficus");
   });
 
-  it("should set a planttype correctly from the service", () => {
-    fixture.whenStable().then(() => {
+  it("should set a planttype correctly from the service", fakeAsync(() =>  {
       mockPlantTypesService.getById.and.returnValue(PLANTTYPES[1]);
       fixture.detectChanges();
-    expect(fixture.componentInstance.plantType.name).toBe("Licht Rode Braziliaanse Leisterbes");
-    });
-  });
+      console.log(fixture.componentInstance.plantType)
+      tick();
+      expect(fixture.componentInstance.plantType.name).toBe("Licht Rode Braziliaanse Leisterbes");       
+    }));
 });

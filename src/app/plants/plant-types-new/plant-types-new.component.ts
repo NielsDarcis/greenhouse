@@ -42,7 +42,7 @@ export class PlantTypesNewComponent implements OnInit {
   async ngOnInit() {
     let id = this.activeRoute.snapshot.paramMap.get("id");
     if (id !== null) {
-      let plantType = await this.plantTypesService.getById(id);
+      const plantType = await this.plantTypesService.getById(id);
       this.plantType = plantType;
     }
   }

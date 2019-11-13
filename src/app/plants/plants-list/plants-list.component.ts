@@ -19,7 +19,6 @@ export class PlantsListComponent implements OnInit {
   constructor(private plantService: PlantsService, private router: Router) {}
 
   async ngOnInit() {
-    console.log('test')
     // this.plantService.deleteAll();
     this.plantList = await this.plantService.getAll();
     this.plantList = this.checkAllPlantsThresholds(this.plantList);
@@ -37,7 +36,6 @@ export class PlantsListComponent implements OnInit {
     plant.actions = [];
     let tempDiff = plant.type.maxTemp - Math.abs(plant.type.minTemp);
     if (plant.temp > (plant.type.maxTemp - tempDiff*(1 - this.threshold))) {
-      console.log((plant.type.maxTemp - tempDiff*(1 - this.threshold)))
       plant.actions.push("hot");
     }
     if (plant.temp < ( plant.type.minTemp + tempDiff * this.threshold)) {

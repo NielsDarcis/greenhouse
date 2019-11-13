@@ -36,7 +36,6 @@ export class PlantTypesComponent implements OnInit {
     };
     let fuse: any = new Fuse(this.plantTypeList, options);
     let result: any = fuse.search(this.searchFilter);
-    console.log(result)
     let shortResult:any =[];
     for(let item of result){
       shortResult.push(item.item);
